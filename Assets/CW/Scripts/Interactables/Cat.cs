@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace CW.Scripts.Interactables
 {
-	public class Cat : Interactable
+	public class Cat : Interactable, IPathTracker
 	{
 		[SerializeField] private AudioClip _meowClip;
 
@@ -19,18 +19,7 @@ namespace CW.Scripts.Interactables
 		// Use this for initialization
 		void Start ()
 		{
-			Graph g = GameObject.Find("Nav").GetComponent<Graph>();
-
-			List<Node> nodes = g.nodes;
-			Node n1 = nodes[Random.Range(0, nodes.Count)];
-			Node n2 = nodes[Random.Range(0, nodes.Count)];
-			
-			//GetComponent<Follower>().Begin(n1, n2);
-		}
-	
-		// Update is called once per frame
-		void Update () {
-			
+			FindPath(null);
 		}
 
 		public override void Interact(Player _player, Interactions interaction)
@@ -62,6 +51,23 @@ namespace CW.Scripts.Interactables
 		public override bool IsAvailable()
 		{
 			return true;
+		}
+
+		public void OnCompletePath(Node lastNode)
+		{
+			Debug.Log("Completed Path For: " + gameObject.name);
+			FindPath(lastNode);
+		}
+
+		private void FindPath(Node last)
+		{
+			Graph g = GameObject.Find("Nav").GetComponent<Graph>();
+
+			List<Node> nodes = g.nodes;
+			Node n1 = last != null ? last : nodes[Random.Range(0, nodes.Count)];
+			Node n2 = nodes[Random.Range(0, nodes.Count)];
+			
+			GetComponent<Follower>().Begin(n1, n2, this);
 		}
 	}
 }

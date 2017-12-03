@@ -42,12 +42,12 @@ public class GraphEditor : Editor
 				{
 					Color color = Handles.color;
 					Handles.color = Color.green;
-					//Handles.DrawLine ( node.transform.position, connection.transform.position );
+					Handles.DrawLine ( node.transform.position, connection.transform.position );
 					Handles.color = color;
 				}
 				else
 				{
-					//Handles.DrawLine ( node.transform.position, connection.transform.position );
+					Handles.DrawLine ( node.transform.position, connection.transform.position );
 				}
 			}
 		}
