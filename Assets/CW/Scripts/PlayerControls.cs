@@ -65,7 +65,9 @@ namespace CW.Scripts
 
         private void DetectInteractable()
         {
-            RaycastHit2D hit = Physics2D.Raycast(_player.transform.position, _lastForward, 1.0f, _layerMask);
+            RaycastHit2D hit = Physics2D.BoxCast(_player.transform.position, _player.GetComponent<Collider2D>().bounds.size, 0.0f, _lastForward,
+                1.0f, _layerMask);
+            //RaycastHit2D hit = Physics2D.Raycast(_player.transform.position, _lastForward, 1.0f, _layerMask);
             if (hit.collider != null)
             {
                 Debug.Log("hit name: " + hit.collider.name);

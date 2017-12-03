@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using CW.Scripts;
+using CW.Scripts.UI;
 using UnityEngine;
 
 namespace CW.Scripts
@@ -11,19 +12,24 @@ namespace CW.Scripts
 
         private void Awake()
         {
-			_collider2D = GetComponent<Collider2D>();
+            _collider2D = GetComponent<Collider2D>();
         }
-        
+
+        void Start()
+        {
+            CatMeter.TotalNewspapers++;
+        }
+
         public override void Interact(Player player, Interactions interaction)
         {
             if (interaction == Interactions.Pickup)
             {
-				_collider2D.enabled = false;
-            } else if (interaction == Interactions.Drop)
+                _collider2D.enabled = false;
+            }
+            else if (interaction == Interactions.Drop)
             {
                 _collider2D.enabled = true;
             }
-            
         }
 
         public override Dictionary<KeyCode, Interactions> InteractOptions(Player player)
@@ -48,7 +54,11 @@ namespace CW.Scripts
 
         public override void SetDirection(Vector2 walk)
         {
-            
+        }
+
+        private void OnDestroy()
+        {
+            CatMeter.TotalNewspapers--;
         }
     }
 }

@@ -11,9 +11,11 @@ namespace CW.Scripts
         private readonly string _directionTrigger = "Direction";
         private readonly string _speedTrigger = "Speed";
 
+        public bool PauseAnimation = false;
+
         public void Walk(Vector2 walk)
         {
-            if (walk == Vector2.zero)
+            if (walk == Vector2.zero || PauseAnimation)
             {
                 _playerAnimator.SetFloat(_speedTrigger, 0.0f);
             }

@@ -34,6 +34,7 @@ namespace CW.Scripts.Interactables
                 _transform.localEulerAngles = angles;
 
                 _isOpen = !_isOpen;
+                Neighbor.Instance().RedoPath();
             }
             else if (interaction == Interactions.Drop)
             {

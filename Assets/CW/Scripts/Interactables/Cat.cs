@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using CW.Scripts.UI;
 using UnityEngine;
 
 namespace CW.Scripts.Interactables
@@ -19,6 +20,8 @@ namespace CW.Scripts.Interactables
 			_collider2D = GetComponent<Collider2D>();
 			_playerAnimation = GetComponent<PlayerAnimation>();
 			_follower = GetComponent<Follower>();
+
+			CatMeter.TotalCat++;
 		}
 	
 		// Use this for initialization
@@ -37,11 +40,13 @@ namespace CW.Scripts.Interactables
 			{
 				_collider2D.enabled = false;
 				_follower.Stop();
+				_playerAnimation.PauseAnimation = true;
 			}
 			else if (interaction == Interactions.Drop)
 			{
 				_collider2D.enabled = true;
 				FindPath(null);
+				_playerAnimation.PauseAnimation = false;
 			}
 		}
 
@@ -94,6 +99,11 @@ namespace CW.Scripts.Interactables
 			Node n2 = nodes[Random.Range(0, nodes.Count)];
 			
 			_follower.Begin(n1, n2, this);
+		}
+
+		private void OnDestroy()
+		{
+			CatMeter.TotalCat--;
 		}
 	}
 }

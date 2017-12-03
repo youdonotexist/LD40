@@ -133,3 +133,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bellClip: {fileID: 8300000, guid: 1d8861081db0f4500a140daa7cedb1d5, type: 3}
+  _newsPaper: {fileID: 1516224009184426, guid: f18de0aca4dbd47aa95396c3d02e6814, type: 2}
+  _newsPaperSpawnPoint: {fileID: 0}

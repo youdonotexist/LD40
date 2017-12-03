@@ -10,12 +10,20 @@ namespace CW.Scripts.Events
 		private AudioClip _bellClip;
 
 		[SerializeField] private GameObject _newsPaper;
-		[SerializeField] private Transform _newsPaperSpawnPoint;
+		[SerializeField] private CircleCollider2D _newsPaperSpawnPoint;
 		
 		// Use this for initialization
 		void Start () {
 			Audio.PlayOneShot(_bellClip);
-			Instantiate(_newsPaper, _newsPaperSpawnPoint);
+			GameObject go = Instantiate(_newsPaper);
+			Vector3 rand = (Random.insideUnitCircle * _newsPaperSpawnPoint.radius);
+			
+			go.transform.position = _newsPaperSpawnPoint.transform.position + rand;
+		}
+
+		public void SetSpawnPoint(CircleCollider2D spawn)
+		{
+			_newsPaperSpawnPoint = spawn;
 		}
 	
 		// Update is called once per fram}}}e

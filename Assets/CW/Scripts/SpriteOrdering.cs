@@ -20,7 +20,7 @@ namespace CW.Scripts
 		}
 	
 		// Update is called once per frame
-		void Update ()
+		void LateUpdate ()
 		{
 			if (DoRendererAdjjstment)
 			{

@@ -10,59 +10,19 @@ namespace Dj.Scripts.Editor
     public class NeighborEditor : UnityEditor.Editor
     {
         protected Graph _graph;
+        protected Neighbor _neighbor;
 
         void OnEnable()
         {
-            Neighbor neighbor = target as Neighbor;
-            _graph = neighbor.GetComponent<Graph>();
+            _neighbor = target as Neighbor;
+            _graph = _neighbor.GetComponent<Graph>();
         }
 
         public override void OnInspectorGUI()
         {
             if (GUILayout.Button("Build Paths"))
             {
-                List<Node> nodes = _graph.nodes;
-
-                foreach (var node in nodes)
-                {
-                    node.connections.Clear();
-                }
-
-                foreach (var node in nodes)
-                {
-                    List<Node> sorted = nodes
-                        .OrderBy(point => Vector3.Distance(node.transform.position, point.transform.position)).ToList();
-
-                    int added = 0;
-                    foreach (var nodeCheck in sorted)
-                    {
-                        if (nodeCheck == node)
-                        {
-                            continue;
-                        }
-
-                        //if (/*nodeCheck.connections.Contains(node) || nodeCheck.connections.Count > 2*/)
-                        //{
-                        //    continue;
-                        //}
-
-                        float dist = Vector2.Distance(node.transform.position, nodeCheck.transform.position);
-                        Vector2 dir = (nodeCheck.transform.position - node.transform.position).normalized;
-                        RaycastHit2D hit = Physics2D.Raycast(node.transform.position, dir, dist);
-                        if (hit.collider != null)
-                        {
-                            continue;
-                        }
-
-                        node.connections.Add(nodeCheck);
-                        added++;
-
-                        if (added > 4)
-                        {
-                            break;
-                        }
-                    }
-                }
+                _neighbor.BuildPath();
                 
                 SceneView.RepaintAll();
             }

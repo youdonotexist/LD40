@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using CW.Scripts.Events;
+using CW.Scripts.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,21 +14,22 @@ namespace CW.Scripts
         // Phone call (family, newspaper)
         // cat box cleaning
         // 
-        
-        
+
+
         [SerializeField] private Text _eventTextbox;
         [SerializeField] private NewsPaperDelivery _newsPaperDeliveryPrefab;
         [SerializeField] private PhoneCallEvent _phoneCallEventPrefab;
 
+        [SerializeField] private CircleCollider2D _newsPaperDeliverySpawnPoint;
+
         private NewsPaperDelivery _currentDoorEvent = null;
         private PhoneCallEvent _currentPhoneEvent = null;
-        
+
 
         private readonly List<string> _messageQueue = new List<string>();
 
         private float _wait = 0.0f;
-        
-        
+
 
         // Use this for initialization
         void Start()
@@ -37,9 +39,10 @@ namespace CW.Scripts
         // Update is called once per frame
         void Update()
         {
-            if (_currentDoorEvent == null && _wait > 3.0f && Random.value > 0.6f)
+            if (_currentDoorEvent == null && _wait > 3.0f && Random.value > 0.6f && CatMeter.TotalNewspapers < CatMeter.MaxNewspapers)
             {
-                _currentDoorEvent = GameObject.Instantiate(_newsPaperDeliveryPrefab);
+                _currentDoorEvent = Instantiate(_newsPaperDeliveryPrefab);
+                _currentDoorEvent.SetSpawnPoint(_newsPaperDeliverySpawnPoint);
                 AddMessage(_currentDoorEvent.Message());
                 _wait = 0.0f;
             }
@@ -63,7 +66,7 @@ namespace CW.Scripts
 
         private string EventsAsString()
         {
-            return string.Join("\n",  _messageQueue.AsEnumerable().Reverse().ToArray());
+            return string.Join("\n", _messageQueue.AsEnumerable().Reverse().ToArray());
         }
     }
 }
