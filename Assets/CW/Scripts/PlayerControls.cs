@@ -8,6 +8,7 @@ namespace CW.Scripts
     public class PlayerControls : MonoBehaviour
     {
         [SerializeField] private Transform _controlled;
+        [SerializeField] private PlayerAnimation _playerAnimation;
 
         private Rigidbody2D _rigidbody2D;
 
@@ -35,6 +36,7 @@ namespace CW.Scripts
         void FixedUpdate()
         {
             Vector2 walk = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            _playerAnimation.Walk(walk);
 
             //Debug.Log("Walk dir: " + walk);
 
