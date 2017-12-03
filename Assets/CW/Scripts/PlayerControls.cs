@@ -18,6 +18,7 @@ namespace CW.Scripts
 
         public float Speed = 10.0f;
 
+        [SerializeField] private LayerMask _layerMask;
         [SerializeField] private Player _player;
         [SerializeField] private PlayerAnimation _playerAnimation;
 
@@ -40,6 +41,10 @@ namespace CW.Scripts
         // Update is called once per frame
         void FixedUpdate()
         {
+            if (!_player.isMovable)
+            {
+                return;
+            }
             Vector2 walk = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
             _playerAnimation.Walk(walk);
             _player.SetDirection(walk);
@@ -60,28 +65,30 @@ namespace CW.Scripts
 
         private void DetectInteractable()
         {
-            RaycastHit2D hit = Physics2D.Raycast(_player.transform.position, _lastForward, 1.0f);
+            RaycastHit2D hit = Physics2D.Raycast(_player.transform.position, _lastForward, 1.0f, _layerMask);
             if (hit.collider != null)
             {
+                Debug.Log("hit name: " + hit.collider.name);
                 Interactable interactable = hit.collider.GetComponent<Interactable>();
-                if (interactable != null)
+                if (interactable != null && interactable.IsAvailable())
                 {
+                    Debug.Log("hit interactable");
                     if (interactable != _lastInteractable)
                     {
                         _lastInteractable = interactable;
-                        UiManager.Instance().ShowOptionsMenu(_player, interactable);
+                        UIManager.Instance().ShowOptionsMenu(_player, interactable);
                     }
                 }
                 else
                 {
                     _lastInteractable = null;
-                    UiManager.Instance().ShowOptionsMenu(null, null);
+                    UIManager.Instance().ShowOptionsMenu(null, null);
                 }
             }
             else
             {
                 _lastInteractable = null;
-                UiManager.Instance().ShowOptionsMenu(null, null);
+                UIManager.Instance().ShowOptionsMenu(null, null);
             }
         }
     }

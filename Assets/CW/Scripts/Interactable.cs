@@ -7,6 +7,9 @@ namespace CW.Scripts
 	{
 		public enum Interactions
 		{
+			//None
+			None,
+			
 			//Player Only
 			Pickup,
 			Drop,
@@ -17,11 +20,16 @@ namespace CW.Scripts
 			
 			//Door
 			Open,
-			Close
+			Close,
+			
+			//Phone
+			Answer
 		}
 
 		public abstract void Interact(Player player, Interactions interaction);
 
 		public abstract Dictionary<KeyCode, Interactions> InteractOptions(Player player);
+
+		public abstract bool IsAvailable();
 	}
 }

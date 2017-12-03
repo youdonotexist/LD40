@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -42,6 +43,12 @@ namespace CW.Scripts.UI
             Dictionary<KeyCode, Interactable.Interactions> interactions = interactable.InteractOptions(player);
             foreach (KeyCode code in interactions.Keys)
             {
+                if (code == KeyCode.None)
+                {
+                    choiceList += "Press Space to drop what you're carrying";
+                    continue;
+                }
+                
                 string stripped = code.ToString();
                 if (stripped.Contains("Alpha"))
                 {

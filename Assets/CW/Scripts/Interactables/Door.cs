@@ -59,5 +59,10 @@ namespace CW.Scripts.Interactables
 
             return interactions;
         }
+
+        public override bool IsAvailable()
+        {
+            return true;
+        }
     }
 }

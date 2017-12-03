@@ -51,5 +51,10 @@ namespace CW.Scripts.Interactables
 				{KeyCode.Alpha3, Interactions.Kill}
 			};
 		}
+
+		public override bool IsAvailable()
+		{
+			return true;
+		}
 	}
 }

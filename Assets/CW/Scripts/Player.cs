@@ -10,6 +10,8 @@ namespace CW.Scripts
             PickUp
         }
 
+        public bool isMovable = true;
+
         private Interactable _pickedUpInteractable;
         private SpriteRenderer _spriteRenderer;
 
@@ -66,6 +68,17 @@ namespace CW.Scripts
         public bool HasPickedUpInteractable()
         {
             return _pickedUpInteractable != null;
+        }
+
+        public void AnswerPhone()
+        {
+            isMovable = false;
+            Invoke("EnableMovement", 3);
+        }
+
+        private void EnableMovement()
+        {
+            isMovable = true;
         }
     }
 }
