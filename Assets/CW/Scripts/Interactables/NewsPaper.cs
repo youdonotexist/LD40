@@ -1,44 +1,41 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using CW.Scripts.Events;
+using CW.Scripts;
 using UnityEngine;
 
 namespace CW.Scripts
 {
-    public class Phone : Interactable
+    public class NewsPaper : Interactable
     {
-        // Use this for initialization
-        void Start()
-        {
-        }
+        private Collider2D _collider2D;
 
-        // Update is called once per frame
-        void Update()
+        private void Awake()
         {
+			_collider2D = GetComponent<Collider2D>();
         }
-
+        
         public override void Interact(Player player, Interactions interaction)
         {
-            if (interaction == Interactions.Answer)
+            if (interaction == Interactions.Pickup)
             {
-                player.AnswerPhone();
+				_collider2D.enabled = false;
+            } else if (interaction == Interactions.Drop)
+            {
+                _collider2D.enabled = true;
             }
+            
         }
 
         public override Dictionary<KeyCode, Interactions> InteractOptions(Player player)
         {
             Dictionary<KeyCode, Interactions> interactions = new Dictionary<KeyCode, Interactions>();
-
             if (player.HasPickedUpInteractable())
             {
                 interactions.Add(KeyCode.Alpha1, Interactions.Drop);
             }
             else
             {
-                if (FindObjectOfType<PhoneCallEvent>())
-                {
-                    interactions.Add(KeyCode.Alpha1, Interactions.Answer);
-                }
+                interactions.Add(KeyCode.Alpha1, Interactions.Pickup);
             }
 
             return interactions;
@@ -46,12 +43,7 @@ namespace CW.Scripts
 
         public override bool IsAvailable()
         {
-            if (FindObjectOfType<PhoneCallEvent>())
-            {
-                return true;
-            }
-
-            return false;
+            return true;
         }
     }
 }

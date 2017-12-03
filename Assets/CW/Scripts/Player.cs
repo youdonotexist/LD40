@@ -1,3 +1,4 @@
+using CW.Scripts.Events;
 using CW.Scripts.Interactables;
 using UnityEngine;
 
@@ -30,7 +31,7 @@ namespace CW.Scripts
             }
             else if (code == Interactable.Interactions.Drop)
             {
-                if (_pickedUpInteractable != null && interactable is Door)
+                if (_pickedUpInteractable != null)
                 {
                     Drop();
                 }
@@ -44,11 +45,10 @@ namespace CW.Scripts
                 Vector2 pos = _pickedUpInteractable.transform.position;
                 pos.y = _spriteRenderer.bounds.min.y;
                 _pickedUpInteractable.transform.position = pos;
-                
+
                 _pickedUpInteractable.transform.parent = null;
                 _pickedUpInteractable.Interact(this, Interactable.Interactions.Drop);
                 _pickedUpInteractable = null;
-                
             }
         }
 
@@ -58,7 +58,7 @@ namespace CW.Scripts
             {
                 return;
             }
-            
+
             if (_pickedUpInteractable != null)
             {
                 _pickedUpInteractable.transform.localPosition = (Vector2.Scale(walk, new Vector2(0.1f, 0.1f)));
@@ -79,6 +79,8 @@ namespace CW.Scripts
         private void EnableMovement()
         {
             isMovable = true;
+            PhoneCallEvent phoneCallEvent = FindObjectOfType<PhoneCallEvent>();
+            Destroy(phoneCallEvent.gameObject);
         }
     }
 }

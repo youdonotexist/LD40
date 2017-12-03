@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: a2f334170dbba42b4a04485025e8617c
-timeCreated: 1512300332
-licenseType: Free
+timeCreated: 1512305561
+licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
     21300000: LD40_0
@@ -738,6 +738,20 @@ TextureImporter:
         height: 15
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: LD40_0
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 1009
+        width: 13
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
