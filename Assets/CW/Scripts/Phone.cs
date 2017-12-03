@@ -53,5 +53,10 @@ namespace CW.Scripts
 
             return false;
         }
+
+        public override void SetDirection(Vector2 walk)
+        {
+            
+        }
     }
 }

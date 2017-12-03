@@ -18,7 +18,6 @@ public class Follower : MonoBehaviour
     protected Path m_Path = new Path();
     protected Node m_Current;
     protected IPathTracker _pathTracker;
-    private bool stop = false;
 
     void Awake()
     {
@@ -57,7 +56,7 @@ public class Follower : MonoBehaviour
         UnityEditor.EditorApplication.update += Update;
 #endif
         var e = m_Path.nodes.GetEnumerator();
-        while (!stop && e.MoveNext())
+        while (e.MoveNext())
         {
             m_Current = e.Current;
 
@@ -66,18 +65,20 @@ public class Follower : MonoBehaviour
                 _pathTracker.OnDirectionChange((m_Current.transform.position - transform.position).normalized);
             }
 
+            Debug.Log("Inside node processing");
+            
             // Wait until we reach the current target node and then go to next node
-            yield return new WaitUntil(() =>
-                Vector2.Distance(transform.position, m_Current.transform.position) < (m_Speed * Time.deltaTime));
+            yield return new WaitUntil(delegate
+            {
+                Debug.Log("waiting for event..");
+                return Vector2.Distance(transform.position, m_Current.transform.position) <
+                       (m_Speed * Time.deltaTime) || m_Path == null;
+            });
         }
         Node tmp = m_Current;
         m_Current = null;
-        if (!stop)
-        {
-            _pathTracker.OnCompletePath(tmp);
-        }
+        _pathTracker.OnCompletePath(tmp);
         e.Dispose();
-        stop = false;
 
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.update -= Update;
@@ -86,7 +87,7 @@ public class Follower : MonoBehaviour
 
     void Update()
     {
-        if (m_Current != null)
+        if (m_Current != null && m_Path != null)
         {
             Vector2 walk = (m_Current.transform.position - transform.position).normalized;
             _rigidbody2D.MovePosition(_rigidbody2D.position + (walk * m_Speed * Time.deltaTime));
@@ -95,6 +96,9 @@ public class Follower : MonoBehaviour
 
     public void Stop()
     {
-        stop = true;
+        StopCoroutine("FollowPath");
+        m_Path = null;
+        m_Start = null;
+        m_End = null;
     }
 }

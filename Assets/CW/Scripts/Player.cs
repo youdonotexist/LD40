@@ -62,6 +62,7 @@ namespace CW.Scripts
             if (_pickedUpInteractable != null)
             {
                 _pickedUpInteractable.transform.localPosition = (Vector2.Scale(walk, new Vector2(0.1f, 0.1f)));
+                _pickedUpInteractable.SetDirection(walk);
             }
         }
 

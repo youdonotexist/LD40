@@ -60,6 +60,11 @@ namespace CW.Scripts.Interactables
 			return true;
 		}
 
+		public override void SetDirection(Vector2 walk)
+		{
+			_playerAnimation.Walk(walk);
+		}
+
 		public void OnCompletePath(Node lastNode)
 		{
 			Debug.Log("Completed Path For: " + gameObject.name);
