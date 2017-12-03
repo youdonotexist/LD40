@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using CW.Scripts.Events;
+using CW.Scripts.UI;
 using UnityEngine;
 
 namespace CW.Scripts
@@ -22,6 +23,8 @@ namespace CW.Scripts
             if (interaction == Interactions.Answer)
             {
                 player.AnswerPhone();
+                CatMeter.MaxAttraction -= 3;
+                EvSys.Instance().AddMessage("Answered Phone: <color=green>-3 to Cat Attraction</color>");
             }
         }
 

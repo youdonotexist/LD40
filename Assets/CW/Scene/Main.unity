@@ -483,7 +483,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -313
+  m_SortingOrder: -403
   m_Sprite: {fileID: 21300012, guid: a2f334170dbba42b4a04485025e8617c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -520,7 +520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7ba6d6752334a8ba3f2d58a0ce2f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CenterY: -313.9365
+  CenterY: -403.24603
   DoColliderResize: 0
   DoRendererAdjjstment: 1
 --- !u!114 &57877591
@@ -534,7 +534,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7ba6d6752334a8ba3f2d58a0ce2f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CenterY: -313.9365
+  CenterY: -403.24603
   DoColliderResize: 1
   DoRendererAdjjstment: 1
 --- !u!1 &63611532
@@ -3686,6 +3686,12 @@ Transform:
   m_Father: {fileID: 1834159214}
   m_RootOrder: 66
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &581351628 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114387899408954888, guid: 021af8d200c9f4348b507a253c578a63,
+    type: 2}
+  m_PrefabInternal: {fileID: 1078564896}
+  m_Script: {fileID: -113659843, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &621302656
 GameObject:
   m_ObjectHideFlags: 0
@@ -3851,7 +3857,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -654
+  m_SortingOrder: -840
   m_Sprite: {fileID: 21300006, guid: a2f334170dbba42b4a04485025e8617c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3873,7 +3879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7ba6d6752334a8ba3f2d58a0ce2f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CenterY: -654.2952
+  CenterY: -840.43097
   DoColliderResize: 0
   DoRendererAdjjstment: 1
 --- !u!1 &629766474
@@ -5140,7 +5146,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -48
+  m_SortingOrder: -62
   m_Sprite: {fileID: 21300016, guid: a2f334170dbba42b4a04485025e8617c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5162,7 +5168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7ba6d6752334a8ba3f2d58a0ce2f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CenterY: -48.425396
+  CenterY: -62.201588
   DoColliderResize: 0
   DoRendererAdjjstment: 1
 --- !u!1 &968399983
@@ -5379,7 +5385,7 @@ Prefab:
     - target: {fileID: 212308556735300400, guid: b8145b55c649940f4a081da7bfa99d4d,
         type: 2}
       propertyPath: m_SortingOrder
-      value: 179
+      value: 230
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b8145b55c649940f4a081da7bfa99d4d, type: 2}
@@ -6052,12 +6058,12 @@ Prefab:
     - target: {fileID: 224230087342144886, guid: 021af8d200c9f4348b507a253c578a63,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 412.5
+      value: 530
       objectReference: {fileID: 0}
     - target: {fileID: 224230087342144886, guid: 021af8d200c9f4348b507a253c578a63,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 232
+      value: 298
       objectReference: {fileID: 0}
     - target: {fileID: 224230087342144886, guid: 021af8d200c9f4348b507a253c578a63,
         type: 2}
@@ -6204,6 +6210,11 @@ Prefab:
       propertyPath: m_SizeDelta.x
       value: -577.61
       objectReference: {fileID: 0}
+    - target: {fileID: 114467323702017704, guid: 021af8d200c9f4348b507a253c578a63,
+        type: 2}
+      propertyPath: _attractionCount
+      value: 
+      objectReference: {fileID: 581351628}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 021af8d200c9f4348b507a253c578a63, type: 2}
   m_IsPrefabParent: 0
@@ -6453,7 +6464,7 @@ Prefab:
     - target: {fileID: 212260268234405988, guid: 6b7ad6e0709ed47e0800080ee8ffcf21,
         type: 2}
       propertyPath: m_SortingOrder
-      value: -232
+      value: -298
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b7ad6e0709ed47e0800080ee8ffcf21, type: 2}
@@ -6602,7 +6613,7 @@ Prefab:
     - target: {fileID: 212987174239878976, guid: a4f454fa3158747188d0ec50ee2dceea,
         type: 2}
       propertyPath: m_SortingOrder
-      value: -292
+      value: -375
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a4f454fa3158747188d0ec50ee2dceea, type: 2}
@@ -11112,7 +11123,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -378
+  m_SortingOrder: -486
   m_Sprite: {fileID: 21300010, guid: a2f334170dbba42b4a04485025e8617c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -11134,7 +11145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7ba6d6752334a8ba3f2d58a0ce2f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CenterY: -378.7492
+  CenterY: -486.4968
   DoColliderResize: 0
   DoRendererAdjjstment: 1
 --- !u!1 &1894058088
@@ -11770,7 +11781,7 @@ Prefab:
     - target: {fileID: 212796706031268806, guid: faeb143b762f14f7eaf711045be64628,
         type: 2}
       propertyPath: m_SortingOrder
-      value: -757
+      value: -973
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: faeb143b762f14f7eaf711045be64628, type: 2}

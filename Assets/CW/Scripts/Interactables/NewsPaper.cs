@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using CW.Scripts;
+﻿using System.Collections.Generic;
 using CW.Scripts.UI;
 using UnityEngine;
 
-namespace CW.Scripts
+namespace CW.Scripts.Interactables
 {
     public class NewsPaper : Interactable
     {
@@ -17,7 +15,8 @@ namespace CW.Scripts
 
         void Start()
         {
-            CatMeter.TotalNewspapers++;
+            CatMeter.TotalAttraction++;
+            EvSys.Instance().AddMessage("Newspaper Hoarding: <color=red>+1 to Cat Attraction</color>");
         }
 
         public override void Interact(Player player, Interactions interaction)
@@ -58,7 +57,8 @@ namespace CW.Scripts
 
         private void OnDestroy()
         {
-            CatMeter.TotalNewspapers--;
+            CatMeter.TotalAttraction--;
+            EvSys.Instance().AddMessage("Destroyed Newspaper : <color=green>-1 to Cat Attraction</color>");
         }
     }
 }

@@ -25,6 +25,18 @@ namespace CW.Scripts
         private NewsPaperDelivery _currentDoorEvent = null;
         private PhoneCallEvent _currentPhoneEvent = null;
 
+        private static EvSys _this;
+
+        public static EvSys Instance()
+        {
+            if (_this == null)
+            {
+                _this = GameObject.Find("EvSys").GetComponent<EvSys>();
+            }
+
+            return _this;
+        }
+
 
         private readonly List<string> _messageQueue = new List<string>();
 
@@ -58,7 +70,7 @@ namespace CW.Scripts
             }
         }
 
-        private void AddMessage(string message)
+        public void AddMessage(string message)
         {
             _messageQueue.Add(message);
             _eventTextbox.text = EventsAsString();

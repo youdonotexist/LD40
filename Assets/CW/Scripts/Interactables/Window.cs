@@ -77,6 +77,8 @@ namespace CW.Scripts.Interactables
 					cat.transform.position = pos;
 
 					_spawnWait = 0.0f;
+					
+					EvSys.Instance().AddMessage("Window Cat: <color=red>+1 to Cat Lady</color>");
 				}
 
 				_spawnWait += Time.deltaTime;
