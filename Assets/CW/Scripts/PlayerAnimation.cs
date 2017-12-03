@@ -25,21 +25,30 @@ namespace CW.Scripts
             PlayerControls.Direction direction = _direction;
             if (walk != Vector2.zero)
             {
-                if (walk.x < 0)
+                float absX = Mathf.Abs(walk.x);
+                float absY = Mathf.Abs(walk.y);
+
+                if (absX > absY)
                 {
-                    direction = PlayerControls.Direction.Left;
-                }
-                else if (walk.x > 0)
-                {
-                    direction = PlayerControls.Direction.Right;
-                }
-                else if (walk.y > 0)
-                {
-                    direction = PlayerControls.Direction.Up;
+                    if (walk.x < 0)
+                    {
+                        direction = PlayerControls.Direction.Left;
+                    }
+                    else if (walk.x > 0)
+                    {
+                        direction = PlayerControls.Direction.Right;
+                    }
                 }
                 else
                 {
-                    direction = PlayerControls.Direction.Down;
+                    if (walk.y > 0)
+                    {
+                        direction = PlayerControls.Direction.Up;
+                    }
+                    else
+                    {
+                        direction = PlayerControls.Direction.Down;
+                    }    
                 }
             }
 

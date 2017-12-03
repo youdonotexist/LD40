@@ -18,12 +18,13 @@ public class Follower : MonoBehaviour
     protected Path m_Path = new Path();
     protected Node m_Current;
     protected IPathTracker _pathTracker;
+    private bool stop = false;
 
     void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
     }
-    
+
     public void Begin(Node start, Node end, IPathTracker tracker)
     {
         m_Graph = GameObject.Find("Nav").GetComponent<Graph>();
@@ -56,7 +57,7 @@ public class Follower : MonoBehaviour
         UnityEditor.EditorApplication.update += Update;
 #endif
         var e = m_Path.nodes.GetEnumerator();
-        while (e.MoveNext())
+        while (!stop && e.MoveNext())
         {
             m_Current = e.Current;
 
@@ -66,13 +67,18 @@ public class Follower : MonoBehaviour
             }
 
             // Wait until we reach the current target node and then go to next node
-            yield return new WaitUntil(() => Vector2.Distance(transform.position, m_Current.transform.position) < (m_Speed * Time.deltaTime));
+            yield return new WaitUntil(() =>
+                Vector2.Distance(transform.position, m_Current.transform.position) < (m_Speed * Time.deltaTime));
         }
         Node tmp = m_Current;
         m_Current = null;
-        _pathTracker.OnCompletePath(tmp);
+        if (!stop)
+        {
+            _pathTracker.OnCompletePath(tmp);
+        }
         e.Dispose();
-        
+        stop = false;
+
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.update -= Update;
 #endif
@@ -85,5 +91,10 @@ public class Follower : MonoBehaviour
             Vector2 walk = (m_Current.transform.position - transform.position).normalized;
             _rigidbody2D.MovePosition(_rigidbody2D.position + (walk * m_Speed * Time.deltaTime));
         }
+    }
+
+    public void Stop()
+    {
+        stop = true;
     }
 }

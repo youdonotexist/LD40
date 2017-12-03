@@ -10,6 +10,7 @@ namespace CW.Scripts.Interactables
 		private AudioSource _audioSource;
 		private Collider2D _collider2D;
 		private PlayerAnimation _playerAnimation;
+		private Follower _follower;
 		
 
 		void Awake()
@@ -17,6 +18,7 @@ namespace CW.Scripts.Interactables
 			_audioSource = GetComponent<AudioSource>();
 			_collider2D = GetComponent<Collider2D>();
 			_playerAnimation = GetComponent<PlayerAnimation>();
+			_follower = GetComponent<Follower>();
 		}
 	
 		// Use this for initialization
@@ -34,10 +36,12 @@ namespace CW.Scripts.Interactables
 			else if (interaction == Interactions.Pickup)
 			{
 				_collider2D.enabled = false;
+				_follower.Stop();
 			}
 			else if (interaction == Interactions.Drop)
 			{
 				_collider2D.enabled = true;
+				FindPath(null);
 			}
 		}
 
@@ -75,7 +79,7 @@ namespace CW.Scripts.Interactables
 			Node n1 = last != null ? last : nodes[Random.Range(0, nodes.Count)];
 			Node n2 = nodes[Random.Range(0, nodes.Count)];
 			
-			GetComponent<Follower>().Begin(n1, n2, this);
+			_follower.Begin(n1, n2, this);
 		}
 	}
 }
