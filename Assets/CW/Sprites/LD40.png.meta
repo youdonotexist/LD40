@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: a2f334170dbba42b4a04485025e8617c
-timeCreated: 1512259954
+timeCreated: 1512291645
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
@@ -29,6 +29,31 @@ TextureImporter:
     21300044: LD40_22
     21300046: LD40_23
     21300048: LD40_24
+    21300050: LD40_25
+    21300052: LD40_26
+    21300054: LD40_27
+    21300056: LD40_28
+    21300058: LD40_29
+    21300060: LD40_30
+    21300062: LD40_31
+    21300064: LD40_32
+    21300066: LD40_33
+    21300068: LD40_34
+    21300070: LD40_35
+    21300072: LD40_36
+    21300074: LD40_37
+    21300076: LD40_38
+    21300078: LD40_39
+    21300080: LD40_40
+    21300082: LD40_41
+    21300084: LD40_42
+    21300086: LD40_43
+    21300088: LD40_44
+    21300090: LD40_45
+    21300092: LD40_46
+    21300094: LD40_47
+    21300096: LD40_48
+    21300098: LD40_49
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -66,7 +91,7 @@ TextureImporter:
   lightmap: 0
   compressionQuality: 50
   spriteMode: 2
-  spriteExtrude: 1
+  spriteExtrude: 0
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
@@ -129,20 +154,6 @@ TextureImporter:
   spriteSheet:
     serializedVersion: 2
     sprites:
-    - serializedVersion: 2
-      name: LD40_0
-      rect:
-        serializedVersion: 2
-        x: 1
-        y: 1007
-        width: 11
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 3, y: 5, z: 3, w: 5}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
     - serializedVersion: 2
       name: LD40_1
       rect:
@@ -221,8 +232,8 @@ TextureImporter:
         y: 949
         width: 43
         height: 22
-      alignment: 2
-      pivot: {x: 0.5, y: 1}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -277,8 +288,8 @@ TextureImporter:
         y: 968
         width: 5
         height: 9
-      alignment: 9
-      pivot: {x: 0.4999939, y: 0.10847303}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -305,8 +316,8 @@ TextureImporter:
         y: 929
         width: 7
         height: 20
-      alignment: 9
-      pivot: {x: 0.5, y: 0.9022156}
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -473,6 +484,258 @@ TextureImporter:
         y: 864
         width: 8
         height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: LD40_25
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 832
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: LD40_26
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 832
+        width: 10
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: LD40_27
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 832
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: LD40_28
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 832
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: LD40_29
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 832
+        width: 10
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: LD40_30
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 811
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: LD40_31
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 811
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: LD40_32
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 811
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: LD40_33
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 811
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: LD40_34
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 790
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: LD40_35
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 790
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: LD40_37
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 790
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: LD40_44
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 790
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: LD40_45
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 768
+        width: 8
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: LD40_46
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 768
+        width: 10
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: LD40_47
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 768
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: LD40_48
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 768
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: LD40_49
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 768
+        width: 10
+        height: 15
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
