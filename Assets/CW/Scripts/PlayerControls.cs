@@ -7,20 +7,25 @@ namespace CW.Scripts
 {
     public class PlayerControls : MonoBehaviour
     {
-        [SerializeField] private Transform _controlled;
-        [SerializeField] private PlayerAnimation _playerAnimation;
-
-        private Rigidbody2D _rigidbody2D;
+        public enum Direction
+        {
+            Idle = 0,
+            Up = 1,
+            Right = 2,
+            Down = 3,
+            Left = 4
+        }
 
         public float Speed = 10.0f;
 
-        private Vector3 _lastForward = Vector3.down;
+        [SerializeField] private Player _player;
+        [SerializeField] private PlayerAnimation _playerAnimation;
 
-        private bool _didInteract = false;
+        private Rigidbody2D _rigidbody2D;
+        private Vector3 _lastForward = Vector3.down;
+        private Interactable _lastInteractable;
 
         private static PlayerControls _this;
-
-        private Interactable _lastInteractable;
 
         public static PlayerControls Instance()
         {
@@ -29,7 +34,7 @@ namespace CW.Scripts
 
         void Awake()
         {
-            _rigidbody2D = _controlled.GetComponent<Rigidbody2D>();
+            _rigidbody2D = _player.GetComponent<Rigidbody2D>();
         }
 
         // Update is called once per frame
@@ -37,9 +42,7 @@ namespace CW.Scripts
         {
             Vector2 walk = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
             _playerAnimation.Walk(walk);
-
-            //Debug.Log("Walk dir: " + walk);
-
+            _player.SetDirection(walk);
             _rigidbody2D.MovePosition(_rigidbody2D.position + (walk * Speed * Time.deltaTime));
 
             if (walk != Vector2.zero)
@@ -47,28 +50,39 @@ namespace CW.Scripts
                 _lastForward = walk;
             }
 
-            Debug.DrawLine(_controlled.transform.position,
-                _controlled.transform.position + new Vector3(_lastForward.x, _lastForward.y, 0.0f));
+            if (_lastInteractable == null && Input.GetKeyDown(KeyCode.Space))
+            {
+                _player.Drop();
+            }
 
-            RaycastHit2D hit = Physics2D.Raycast(_controlled.transform.position, _lastForward, 1.0f);
+            DetectInteractable();
+        }
+
+        private void DetectInteractable()
+        {
+            RaycastHit2D hit = Physics2D.Raycast(_player.transform.position, _lastForward, 1.0f);
             if (hit.collider != null)
             {
                 Interactable interactable = hit.collider.GetComponent<Interactable>();
-                Player player = _controlled.GetComponent<Player>();
-                if (interactable != null && interactable != _lastInteractable)
+                if (interactable != null)
                 {
-                    UiManager.Instance().ShowOptionsMenu(player, interactable);
+                    if (interactable != _lastInteractable)
+                    {
+                        _lastInteractable = interactable;
+                        UiManager.Instance().ShowOptionsMenu(_player, interactable);
+                    }
                 }
                 else
                 {
+                    _lastInteractable = null;
                     UiManager.Instance().ShowOptionsMenu(null, null);
                 }
             }
             else
             {
+                _lastInteractable = null;
                 UiManager.Instance().ShowOptionsMenu(null, null);
             }
-            _didInteract = true;
         }
     }
 }

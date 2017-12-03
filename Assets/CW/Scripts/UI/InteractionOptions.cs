@@ -13,15 +13,15 @@ namespace CW.Scripts.UI
 
         void Update()
         {
-            if (_interactable != null)
+            if (_interactable != null && _interactor != null)
             {
-                foreach (KeyCode kc in _interactable.InteractOptions().Keys)
+                foreach (KeyCode kc in _interactable.InteractOptions(_interactor).Keys)
                 {
-                    if (Input.GetKeyDown(kc))
-                    {
-                       // _interactor.OnInteraction(kc);
-                       // _interactable.OnInteraction()
-                    }
+                    if (!Input.GetKeyDown(kc)) continue;
+                    Interactable.Interactions i = _interactable.InteractOptions(_interactor)[kc];
+                    _interactor.Interact(i, _interactable);
+                    _interactable.Interact(_interactor, i);
+                    Hide();
                 }
             }
         }
@@ -33,19 +33,24 @@ namespace CW.Scripts.UI
                 Hide();
                 return;
             }
-            else
-            {
-                gameObject.SetActive(true);
-            }
+
+            gameObject.SetActive(true);
+            _interactable = interactable;
+            _interactor = player;
 
             string choiceList = "";
-            foreach (KeyCode code in interactable.InteractOptions().Keys)
+            Dictionary<KeyCode, Interactable.Interactions> interactions = interactable.InteractOptions(player);
+            foreach (KeyCode code in interactions.Keys)
             {
-                choiceList += code + ": " + interactable.InteractOptions()[code] + "\n";
+                string stripped = code.ToString();
+                if (stripped.Contains("Alpha"))
+                {
+                    stripped = stripped.Replace("Alpha", "");
+                }
+                choiceList += stripped + ": " + interactions[code] + "\n";
             }
 
             _choiceBox.text = choiceList;
-            _choiceBox.resizeTextForBestFit = true;
 
             RectTransform canvasRect = _choiceBox.canvas.GetComponent<RectTransform>();
 

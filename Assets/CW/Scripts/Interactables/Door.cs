@@ -3,34 +3,61 @@ using UnityEngine;
 
 namespace CW.Scripts.Interactables
 {
-	public class Door : Interactable
-	{
+    public class Door : Interactable
+    {
+        private bool _isOpen = false;
+        private Collider2D _collider2D;
+        private Transform _transform;
+        private SpriteRenderer _spriteRenderer;
 
-		private bool _isOpen = false;
-		private Collider2D _collider2D;
-		private Transform _transform;
+        void Awake()
+        {
+            _collider2D = GetComponent<Collider2D>();
+            _transform = GetComponent<Transform>();
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+        }
 
-		void Awake()
-		{
-			_collider2D = GetComponent<Collider2D>();
-			_transform = GetComponent<Transform>();
-		}
+        public override void Interact(Player player, Interactions interaction)
+        {
+            if (interaction == Interactions.Close || interaction == Interactions.Open)
+            {
+                Vector3 angles = _transform.localEulerAngles;
+                if (_spriteRenderer.flipY)
+                {
+                    angles.z += _isOpen ? 90.0f : -90.0f;
+                }
+                else
+                {
+                    angles.z += _isOpen ? -90.0f : 90.0f;
+                }
+                
+                _transform.localEulerAngles = angles;
 
-		public override void Interact(Transform transform, KeyCode keycode)
-		{
-			Vector3 angles = _transform.localEulerAngles;
-			angles.z += _isOpen ? -90.0f : 90.0f;
-			_transform.localEulerAngles = angles;
+                _isOpen = !_isOpen;
+            }
+            else if (interaction == Interactions.Drop)
+            {
+                if (!_isOpen)
+                {
+                    Interact(player, Interactions.Open);
+                }
+            }
+        }
 
-			_isOpen = !_isOpen;
-		}
+        public override Dictionary<KeyCode, Interactions> InteractOptions(Player player)
+        {
+            Dictionary<KeyCode, Interactions> interactions = new Dictionary<KeyCode, Interactions>();
 
-		public override Dictionary<KeyCode, string> InteractOptions()
-		{
-			return new Dictionary<KeyCode, string>()
-			{
-				{KeyCode.A, _isOpen ? "Close" : "Open"}
-			};
-		}
-	}
+            if (player.HasPickedUpInteractable())
+            {
+                interactions.Add(KeyCode.Alpha1, Interactions.Drop);
+            }
+            else
+            {
+                interactions.Add(KeyCode.Alpha1, _isOpen ? Interactions.Close : Interactions.Open);
+            }
+
+            return interactions;
+        }
+    }
 }

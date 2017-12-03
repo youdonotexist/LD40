@@ -8,10 +8,12 @@ namespace CW.Scripts.Interactables
 		[SerializeField] private AudioClip _meowClip;
 
 		private AudioSource _audioSource;
+		private Collider2D _collider2D;
 
 		void Awake()
 		{
 			_audioSource = GetComponent<AudioSource>();
+			_collider2D = GetComponent<Collider2D>();
 		}
 	
 		// Use this for initialization
@@ -21,27 +23,32 @@ namespace CW.Scripts.Interactables
 	
 		// Update is called once per frame
 		void Update () {
-			if (!_audioSource.isPlaying && Random.value > 0.6)
+			
+		}
+
+		public override void Interact(Player _player, Interactions interaction)
+		{
+			if (interaction == Interactions.Pet)
 			{
 				_audioSource.PlayOneShot(_meowClip);
 			}
-		}
-
-		public override void Interact(Transform transform, KeyCode keycode)
-		{
-			if (keycode == KeyCode.B)
+			else if (interaction == Interactions.Pickup)
 			{
-				_audioSource.PlayOneShot(_meowClip);
+				_collider2D.enabled = false;
+			}
+			else if (interaction == Interactions.Drop)
+			{
+				_collider2D.enabled = true;
 			}
 		}
 
-		public override Dictionary<KeyCode, string> InteractOptions()
+		public override Dictionary<KeyCode, Interactions> InteractOptions(Player player)
 		{
-			return new Dictionary<KeyCode, string>()
+			return new Dictionary<KeyCode, Interactions>()
 			{
-				{KeyCode.A, "Pick Up"},
-				{KeyCode.B, "Pet"},
-				{KeyCode.C, "Kill"}
+				{KeyCode.Alpha1, Interactions.Pickup},
+				{KeyCode.Alpha2, Interactions.Pet},
+				{KeyCode.Alpha3, Interactions.Kill}
 			};
 		}
 	}
