@@ -31,23 +31,32 @@ namespace CW.Scripts
                 _playerAnimator.SetFloat(_speedTrigger, 1.0f);
             }
 
-            Direction direction;
-            if (walk.x < 0)
+            Direction direction = _direction;
+            if (walk != Vector2.zero)
             {
-                direction = Direction.Left;
-            } else if (walk.x > 0)
-            {
-                direction = Direction.Right;
-            } else if (walk.y > 0)
-            {
-                direction = Direction.Up;
+                if (walk.x < 0)
+                {
+                    direction = Direction.Left;
+                }
+                else if (walk.x > 0)
+                {
+                    direction = Direction.Right;
+                }
+                else if (walk.y > 0)
+                {
+                    direction = Direction.Up;
+                }
+                else
+                {
+                    direction = Direction.Down;
+                }
             }
-            else
+
+            if (direction != _direction)
             {
-                direction = Direction.Down;
+                _direction = direction;
+                _setDirection(_direction);
             }
-            
-            _setDirection(direction);
         }
 
         public void _setDirection(Direction direction)
