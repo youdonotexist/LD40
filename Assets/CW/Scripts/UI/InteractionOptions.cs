@@ -24,6 +24,15 @@ namespace CW.Scripts.UI
                     _interactable.Interact(_interactor, i);
                     Hide();
                 }
+
+                if (_interactable != null)
+                {
+                    RectTransform canvasRect = _choiceBox.canvas.GetComponent<RectTransform>();
+
+                    Vector3 viewPos = Camera.main.WorldToViewportPoint(_interactable.transform.position);
+                    GetComponent<RectTransform>().anchoredPosition = new Vector2(viewPos.x * canvasRect.sizeDelta.x,
+                        viewPos.y * canvasRect.sizeDelta.y);
+                }
             }
         }
 
@@ -58,12 +67,6 @@ namespace CW.Scripts.UI
             }
 
             _choiceBox.text = choiceList;
-
-            RectTransform canvasRect = _choiceBox.canvas.GetComponent<RectTransform>();
-
-            Vector3 viewPos = Camera.main.WorldToViewportPoint(interactable.transform.position);
-            GetComponent<RectTransform>().anchoredPosition = new Vector2(viewPos.x * canvasRect.sizeDelta.x,
-                viewPos.y * canvasRect.sizeDelta.y);
         }
 
         private void Hide()

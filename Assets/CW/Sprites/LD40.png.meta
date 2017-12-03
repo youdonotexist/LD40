@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: a2f334170dbba42b4a04485025e8617c
-timeCreated: 1512291645
-licenseType: Pro
+timeCreated: 1512300332
+licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: LD40_0
@@ -232,8 +232,8 @@ TextureImporter:
         y: 949
         width: 43
         height: 22
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.49720585, y: 0.9696739}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

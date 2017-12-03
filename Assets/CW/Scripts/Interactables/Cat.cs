@@ -17,8 +17,15 @@ namespace CW.Scripts.Interactables
 		}
 	
 		// Use this for initialization
-		void Start () {
-		
+		void Start ()
+		{
+			Graph g = GameObject.Find("Nav").GetComponent<Graph>();
+
+			List<Node> nodes = g.nodes;
+			Node n1 = nodes[Random.Range(0, nodes.Count)];
+			Node n2 = nodes[Random.Range(0, nodes.Count)];
+			
+			//GetComponent<Follower>().Begin(n1, n2);
 		}
 	
 		// Update is called once per frame
