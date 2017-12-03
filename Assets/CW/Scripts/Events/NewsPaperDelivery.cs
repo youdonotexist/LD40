@@ -18,7 +18,7 @@ namespace CW.Scripts.Events
 			Instantiate(_newsPaper, _newsPaperSpawnPoint);
 		}
 	
-		// Update is called once per frame
+		// Update is called once per fram}}}e
 		void Update () {
 			if (!Audio.isPlaying)
 			{

@@ -31,5 +31,7 @@ namespace CW.Scripts
 		public abstract Dictionary<KeyCode, Interactions> InteractOptions(Player player);
 
 		public abstract bool IsAvailable();
+		
+		public abstract void SetDirection(Vector2 walk);
 	}
 }

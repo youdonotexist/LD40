@@ -64,5 +64,10 @@ namespace CW.Scripts.Interactables
         {
             return true;
         }
+
+        public override void SetDirection(Vector2 walk)
+        {
+            
+        }
     }
 }

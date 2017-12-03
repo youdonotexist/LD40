@@ -28,7 +28,6 @@ namespace Dj.Scripts.Editor
                     node.connections.Clear();
                 }
 
-
                 foreach (var node in nodes)
                 {
                     List<Node> sorted = nodes
@@ -42,10 +41,10 @@ namespace Dj.Scripts.Editor
                             continue;
                         }
 
-                        if (nodeCheck.connections.Contains(node) || nodeCheck.connections.Count > 2)
-                        {
-                            continue;
-                        }
+                        //if (/*nodeCheck.connections.Contains(node) || nodeCheck.connections.Count > 2*/)
+                        //{
+                        //    continue;
+                        //}
 
                         float dist = Vector2.Distance(node.transform.position, nodeCheck.transform.position);
                         Vector2 dir = (nodeCheck.transform.position - node.transform.position).normalized;
@@ -58,12 +57,13 @@ namespace Dj.Scripts.Editor
                         node.connections.Add(nodeCheck);
                         added++;
 
-                        if (added > 2)
+                        if (added > 4)
                         {
                             break;
                         }
                     }
                 }
+                
                 SceneView.RepaintAll();
             }
 
@@ -77,19 +77,6 @@ namespace Dj.Scripts.Editor
                 }
                 
                 SceneView.RepaintAll();
-            }
-            
-            if (GUILayout.Button("Cat"))
-            {
-                Follower follower = GameObject.Find("Cat").GetComponent<Follower>();
-                
-                List<Node> nodes = _graph.nodes;
-                List<Node> sorted = nodes
-                    .OrderBy(point => Vector3.Distance(follower.transform.position, point.transform.position)).ToList();
-                Node n1 = sorted.First();
-                Node n2 = nodes[Random.Range(0, nodes.Count)];
-			
-                follower.Begin(n1, n2);
             }
         }
     }
