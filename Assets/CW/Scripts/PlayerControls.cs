@@ -48,18 +48,23 @@ namespace CW.Scripts
             Debug.DrawLine(_controlled.transform.position,
                 _controlled.transform.position + new Vector3(_lastForward.x, _lastForward.y, 0.0f));
 
-            RaycastHit2D hit = Physics2D.Raycast(_controlled.transform.position, _lastForward, 10000.0f);
+            RaycastHit2D hit = Physics2D.Raycast(_controlled.transform.position, _lastForward, 1.0f);
             if (hit.collider != null)
             {
                 Interactable interactable = hit.collider.GetComponent<Interactable>();
+                Player player = _controlled.GetComponent<Player>();
                 if (interactable != null && interactable != _lastInteractable)
                 {
-                    UiManager.Instance().ShowOptionsMenu(interactable.InteractOptions());
+                    UiManager.Instance().ShowOptionsMenu(player, interactable);
+                }
+                else
+                {
+                    UiManager.Instance().ShowOptionsMenu(null, null);
                 }
             }
             else
             {
-                UiManager.Instance().ShowOptionsMenu(new Dictionary<KeyCode, string>());
+                UiManager.Instance().ShowOptionsMenu(null, null);
             }
             _didInteract = true;
         }

@@ -13,9 +13,9 @@ namespace CW.Scripts
 		[SerializeField]
 		private InteractionOptions _interactionMenu;
 
-		public void ShowOptionsMenu(Dictionary<KeyCode, string> options)
+		public void ShowOptionsMenu(Player player, Interactable interactable)
 		{
-			_interactionMenu.ShowOptions(options);
+			_interactionMenu.ShowOptions(player, interactable);
 		}
 
 		public static UiManager Instance()
