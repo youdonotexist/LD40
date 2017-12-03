@@ -51,5 +51,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fbc4a58739794884a76b5e820dcb08d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _controlled: {fileID: 0}
   Speed: 3
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 4294967039
+  _player: {fileID: 0}
+  _playerAnimation: {fileID: 0}

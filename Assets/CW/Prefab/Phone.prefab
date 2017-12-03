@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4215466943496510}
   - component: {fileID: 212987174239878976}
   - component: {fileID: 114567616502049340}
+  - component: {fileID: 61751990192273380}
+  - component: {fileID: 114509912211455594}
   m_Layer: 0
   m_Name: Phone
   m_TagString: Untagged
@@ -41,6 +43,42 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &61751990192273380
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1541754617437736}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.16666667, y: 0.3}
+    newSize: {x: 1.6666666, y: 0.73333335}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.3332, y: 0.6}
+  m_EdgeRadius: 0
+--- !u!114 &114509912211455594
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1541754617437736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6ad3332fd10d4f1184e81f6b6cfbbf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114567616502049340
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -52,7 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7ba6d6752334a8ba3f2d58a0ce2f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CenterY: -238.98332
+  CenterY: -213.03519
   DoColliderResize: 0
   DoRendererAdjjstment: 1
 --- !u!212 &212987174239878976
@@ -88,7 +126,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -238
+  m_SortingOrder: -213
   m_Sprite: {fileID: 21300020, guid: a2f334170dbba42b4a04485025e8617c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

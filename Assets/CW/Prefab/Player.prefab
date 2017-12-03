@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 95011720161345596}
   - component: {fileID: 114257377660351342}
   - component: {fileID: 114699618310206104}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7ba6d6752334a8ba3f2d58a0ce2f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CenterY: -273
+  CenterY: -184
   DoColliderResize: 0
   DoRendererAdjjstment: 1
 --- !u!114 &114257377660351342
@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 162d55bcc39f45c4882a6a388fc5b368, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isMovable: 1
 --- !u!212 &212260268234405988
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -178,7 +179,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -273
+  m_SortingOrder: -184
   m_Sprite: {fileID: 21300030, guid: a2f334170dbba42b4a04485025e8617c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
