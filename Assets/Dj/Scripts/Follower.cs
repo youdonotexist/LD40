@@ -60,12 +60,18 @@ public class Follower : MonoBehaviour
         {
             m_Current = e.Current;
 
+            if (m_Current)
+            {
+                _pathTracker.OnDirectionChange((m_Current.transform.position - transform.position).normalized);
+            }
+
             // Wait until we reach the current target node and then go to next node
             yield return new WaitUntil(() => Vector2.Distance(transform.position, m_Current.transform.position) < (m_Speed * Time.deltaTime));
         }
         Node tmp = m_Current;
         m_Current = null;
         _pathTracker.OnCompletePath(tmp);
+        e.Dispose();
         
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.update -= Update;

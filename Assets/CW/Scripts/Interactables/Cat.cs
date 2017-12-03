@@ -9,11 +9,14 @@ namespace CW.Scripts.Interactables
 
 		private AudioSource _audioSource;
 		private Collider2D _collider2D;
+		private PlayerAnimation _playerAnimation;
+		
 
 		void Awake()
 		{
 			_audioSource = GetComponent<AudioSource>();
 			_collider2D = GetComponent<Collider2D>();
+			_playerAnimation = GetComponent<PlayerAnimation>();
 		}
 	
 		// Use this for initialization
@@ -57,6 +60,11 @@ namespace CW.Scripts.Interactables
 		{
 			Debug.Log("Completed Path For: " + gameObject.name);
 			FindPath(lastNode);
+		}
+
+		public void OnDirectionChange(Vector2 dir)
+		{
+			_playerAnimation.Walk(dir);
 		}
 
 		private void FindPath(Node last)

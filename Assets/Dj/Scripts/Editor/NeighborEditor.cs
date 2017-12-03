@@ -57,23 +57,12 @@ namespace Dj.Scripts.Editor
                         node.connections.Add(nodeCheck);
                         added++;
 
-                        if (added > 10)
+                        if (added > 4)
                         {
                             break;
                         }
                     }
                 }
-
-                List<Node> emptyNode = new List<Node>();
-                foreach (var node in nodes)
-                {
-                    if (node.connections.Count == 0)
-                    {
-                        emptyNode.Add(node);
-                    }    
-                }
-                
-                
                 
                 SceneView.RepaintAll();
             }
