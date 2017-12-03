@@ -10,6 +10,8 @@ namespace CW.Scripts
 		private SpriteRenderer _spriteRenderer;
 		private BoxCollider2D _boxCollider2D;
 		public float CenterY = 0.0f;
+		public bool DoColliderResize = false;
+		public bool DoRendererAdjjstment = true;
 	
 		// Use this for initialization
 		void Awake () {
@@ -20,11 +22,14 @@ namespace CW.Scripts
 		// Update is called once per frame
 		void Update ()
 		{
-			Camera cam = CameraManager.Get().GetCamera();
-			CenterY = cam.WorldToScreenPoint(transform.position).y * -1;
-			_spriteRenderer.sortingOrder = (int) CenterY;
+			if (DoRendererAdjjstment)
+			{
+				Camera cam = CameraManager.Get().GetCamera();
+				CenterY = cam.WorldToScreenPoint(transform.position).y * -1;
+				_spriteRenderer.sortingOrder = (int) CenterY;
+			}
 
-			if (_boxCollider2D)
+			if (DoColliderResize && _boxCollider2D != null)
 			{
 				Vector3 v = _spriteRenderer.bounds.size;
 				_boxCollider2D.size = v;

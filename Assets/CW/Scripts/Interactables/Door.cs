@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace CW.Scripts.Interactables
@@ -15,13 +16,21 @@ namespace CW.Scripts.Interactables
 			_transform = GetComponent<Transform>();
 		}
 
-		public override void Interact(Transform transform)
+		public override void Interact(Transform transform, KeyCode keycode)
 		{
 			Vector3 angles = _transform.localEulerAngles;
 			angles.z += _isOpen ? -90.0f : 90.0f;
 			_transform.localEulerAngles = angles;
 
 			_isOpen = !_isOpen;
+		}
+
+		public override Dictionary<KeyCode, string> InteractOptions()
+		{
+			return new Dictionary<KeyCode, string>()
+			{
+				{KeyCode.A, _isOpen ? "Close" : "Open"}
+			};
 		}
 	}
 }

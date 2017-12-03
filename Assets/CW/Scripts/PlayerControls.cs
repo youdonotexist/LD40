@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
 
@@ -17,6 +18,8 @@ namespace CW.Scripts
         private bool _didInteract = false;
 
         private static PlayerControls _this;
+
+        private Interactable _lastInteractable;
 
         public static PlayerControls Instance()
         {
@@ -37,38 +40,28 @@ namespace CW.Scripts
 
             _rigidbody2D.MovePosition(_rigidbody2D.position + (walk * Speed * Time.deltaTime));
 
-            Vector2 newLook = new Vector2(
-                1.0f * Mathf.Sign(walk.x),
-                1.0f * Mathf.Sign(walk.y)).normalized;
-
-            _lastForward = newLook;
+            if (walk != Vector2.zero)
+            {
+                _lastForward = walk;
+            }
 
             Debug.DrawLine(_controlled.transform.position,
                 _controlled.transform.position + new Vector3(_lastForward.x, _lastForward.y, 0.0f));
 
-            float didInteract = Input.GetAxisRaw("Jump");
-
-            if (Math.Abs(didInteract) > Mathf.Epsilon)
+            RaycastHit2D hit = Physics2D.Raycast(_controlled.transform.position, _lastForward, 10000.0f);
+            if (hit.collider != null)
             {
-                if (_didInteract == false)
+                Interactable interactable = hit.collider.GetComponent<Interactable>();
+                if (interactable != null && interactable != _lastInteractable)
                 {
-                    // Call your event function here.
-                    RaycastHit2D hit = Physics2D.Raycast(_controlled.transform.position, _lastForward, 10000.0f);
-                    if (hit.collider != null)
-                    {
-                        Interactable interactable = hit.collider.GetComponent<Interactable>();
-                        if (interactable != null)
-                        {
-                            interactable.Interact(_controlled);
-                        }
-                    }
-                    _didInteract = true;
+                    UiManager.Instance().ShowOptionsMenu(interactable.InteractOptions());
                 }
             }
-            if (Math.Abs(didInteract) < Mathf.Epsilon)
+            else
             {
-                _didInteract = false;
+                UiManager.Instance().ShowOptionsMenu(new Dictionary<KeyCode, string>());
             }
+            _didInteract = true;
         }
     }
 }
