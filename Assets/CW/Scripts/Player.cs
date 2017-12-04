@@ -103,6 +103,14 @@ namespace CW.Scripts
             }
         }
 
+        public Interactable TakePickedupItem()
+        {
+            Interactable tmp = _pickedUpInteractable;
+            _pickedUpInteractable.transform.parent = null;
+            _pickedUpInteractable = null;
+            return tmp;
+        }
+
         public Vector2 PlayerSize()
         {
             return _spriteRenderer.sprite.bounds.size;

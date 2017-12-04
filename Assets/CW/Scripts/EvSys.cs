@@ -22,8 +22,15 @@ namespace CW.Scripts
 
         [SerializeField] private CircleCollider2D _newsPaperDeliverySpawnPoint;
 
-        private NewsPaperDelivery _currentDoorEvent = null;
-        private PhoneCallEvent _currentPhoneEvent = null;
+        private NewsPaperDelivery _currentDoorEvent;
+        private PhoneCallEvent _currentPhoneEvent;
+        
+        private RoundMetadata[] _roundMetadataList = new RoundMetadata[3];
+        private int _currentRound = 0;
+        
+        private readonly List<string> _messageQueue = new List<string>();
+
+        private float _wait = 0.0f;
 
         private static EvSys _this;
 
@@ -41,15 +48,17 @@ namespace CW.Scripts
             return _this;
         }
 
-
-        private readonly List<string> _messageQueue = new List<string>();
-
-        private float _wait = 0.0f;
-
-
-        // Use this for initialization
         void Start()
         {
+            _roundMetadataList[0] = new RoundMetadata();
+            _roundMetadataList[0].NewspaperFrequency = 10.0f;
+            _roundMetadataList[0].PhoneCallFrequency = 10.0f;
+            
+            _roundMetadataList[1].NewspaperFrequency = 8.0f;
+            _roundMetadataList[1].PhoneCallFrequency = 8.0f;
+            
+            _roundMetadataList[2].NewspaperFrequency = 5.0f;
+            _roundMetadataList[2].PhoneCallFrequency = 5.0f;
         }
 
         // Update is called once per frame
@@ -59,7 +68,6 @@ namespace CW.Scripts
             {
                 _currentDoorEvent = Instantiate(_newsPaperDeliveryPrefab);
                 _currentDoorEvent.SetSpawnPoint(_newsPaperDeliverySpawnPoint);
-                AddMessage(_currentDoorEvent.Message());
                 _wait = 0.0f;
             }
             else if (_currentPhoneEvent == null && _wait > 3.0f && Random.value > 0.6f)

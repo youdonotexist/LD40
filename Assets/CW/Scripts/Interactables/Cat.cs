@@ -43,8 +43,11 @@ namespace CW.Scripts.Interactables
                 if (Vector2.Distance(transform.position, _walkToNode.transform.position) <
                     (_follower.m_Speed * Time.deltaTime))
                 {
-                    FindPath(_walkToNode);
-                    _walkToNode = null;
+                    if (_walkToNode.connections.Count > 0)
+                    {
+                        FindPath(_walkToNode);
+                        _walkToNode = null;
+                    }
                 }
                 else
                 {

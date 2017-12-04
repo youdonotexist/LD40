@@ -12,16 +12,21 @@ namespace CW.Scripts.Interactables
 		[SerializeField]
 		private Sprite _open;
 		
+		[SerializeField]
+		private AudioClip _flush;
+		
 		private bool _isOpen = false;
 		private Collider2D _collider2D;
 		private Transform _transform;
 		private SpriteRenderer _spriteRenderer;
+		private AudioSource _audioSource;
 
 		private void Awake()
 		{
 			_collider2D = GetComponent<Collider2D>();
 			_transform = GetComponent<Transform>();
 			_spriteRenderer = GetComponent<SpriteRenderer>();
+			_audioSource = GetComponent<AudioSource>();
 		}
 
 		public override void Interact(Player player, Interactions interaction)
@@ -40,11 +45,13 @@ namespace CW.Scripts.Interactables
 			else if (interaction == Interactions.Flush)
 			{
 				//Play sound
+				_audioSource.PlayOneShot(_flush);
 			}
 			else if (interaction == Interactions.Flush_Cat)
 			{
 				if (player.IsPickedUpInteractableMurderable())
 				{
+					_audioSource.PlayOneShot(_flush);
 					player.KillCat();
 					EvSys.Instance().AddMessage("Flushed Cat: <color=green> -1 to Cats</color>");
 				}

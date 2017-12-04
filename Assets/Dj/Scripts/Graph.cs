@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using NUnit.Framework;
 using UnityEngine;
 
 /// <summary>
@@ -15,6 +16,8 @@ public class Graph : MonoBehaviour
 	/// </summary>
 	[SerializeField]
 	protected List<Node> m_Nodes = new List<Node> ();
+
+	[SerializeField] private LayerMask _layerMask;
 
 	/// <summary>
 	/// Gets the nodes.
@@ -128,12 +131,23 @@ public class Graph : MonoBehaviour
 		return path;
 	}
 
-	public Node ClosestNode(Transform trand)
+	public Node ClosestNode(Transform trans)
 	{
-		List<Node> sorted = nodes
-			.OrderBy(point => Vector3.Distance(trand.position, point.transform.position)).ToList();
+		List<Node> acceptedNodes = new List<Node>();
+		foreach (var node in nodes)
+		{
+			float dist = Vector2.Distance(trans.position, node.transform.position);
+			Vector2 dir = (node.transform.position - trans.position).normalized;
+			RaycastHit2D hit = Physics2D.Raycast(trans.position, dir, dist, _layerMask);
+			if (hit.collider == null)
+			{
+				acceptedNodes.Add(node);
+			}
+		}
 
-		return sorted.First();
+		IEnumerable<Node> final = acceptedNodes.OrderBy(point => Vector3.Distance(trans.position, point.transform.position));
+
+		return final.Count() == 0 ? null : final.First();
 	}
 	
 }

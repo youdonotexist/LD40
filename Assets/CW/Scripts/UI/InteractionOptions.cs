@@ -81,14 +81,14 @@ namespace CW.Scripts.UI
                     stripped = stripped.Replace("Alpha", "");
                 }
 
-                KeyCode joyMap = KeyCode.None;
+                KeyCode joyMap;
                 choiceList += stripped;
                 if (joystickMap.TryGetValue(code, out joyMap))
                 {
                     choiceList += joyMap != KeyCode.None ? " / " + joystickNameMap[joyMap] : "";
                 }
 
-                choiceList += ": " + interactions[code] + "\n";
+                choiceList += ": " + interactions[code].ToString().Replace("_", " ") + "\n";
             }
 
             _choiceBox.text = choiceList;

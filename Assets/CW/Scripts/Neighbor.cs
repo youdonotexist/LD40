@@ -8,6 +8,7 @@ namespace CW.Scripts
     public class Neighbor : MonoBehaviour
     {
         [SerializeField] private Graph _graph;
+        [SerializeField] private LayerMask _layerMask;
 
         private bool recalc = false;
 
@@ -60,14 +61,9 @@ namespace CW.Scripts
                         continue;
                     }
 
-                    //if (/*nodeCheck.connections.Contains(node) || nodeCheck.connections.Count > 2*/)
-                    //{
-                    //    continue;
-                    //}
-
                     float dist = Vector2.Distance(node.transform.position, nodeCheck.transform.position);
                     Vector2 dir = (nodeCheck.transform.position - node.transform.position).normalized;
-                    RaycastHit2D hit = Physics2D.Raycast(node.transform.position, dir, dist);
+                    RaycastHit2D hit = Physics2D.Raycast(node.transform.position, dir, dist, _layerMask);
                     if (hit.collider != null)
                     {
                         continue;

@@ -27,7 +27,10 @@ namespace CW.Scripts
 			
 			//Toilet
 			Flush,
-			Flush_Cat
+			Flush_Cat,
+			
+			//Freezer
+			Freeze_Cat
 		}
 
 		public abstract void Interact(Player player, Interactions interaction);

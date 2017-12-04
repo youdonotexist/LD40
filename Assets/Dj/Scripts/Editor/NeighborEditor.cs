@@ -38,6 +38,9 @@ namespace Dj.Scripts.Editor
                 
                 SceneView.RepaintAll();
             }
+            
+            base.OnInspectorGUI();
         }
+        
     }
 }
