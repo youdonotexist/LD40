@@ -16,10 +16,12 @@ namespace CW.Scripts
         private Interactable _pickedUpInteractable;
         private SpriteRenderer _spriteRenderer;
         public Vector2 LastWalk = Vector2.zero;
+        private Collider2D _collider2D;
 
         void Awake()
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
+            _collider2D = GetComponent<Collider2D>();
         }
 
         public void Interact(Interactable.Interactions code, Interactable interactable)
@@ -74,6 +76,11 @@ namespace CW.Scripts
             return _pickedUpInteractable != null;
         }
 
+        public bool IsPickedUpInteractableMurderable()
+        {
+            return _pickedUpInteractable != null && _pickedUpInteractable is Cat;
+        }
+
         public void AnswerPhone()
         {
             isMovable = false;
@@ -85,6 +92,25 @@ namespace CW.Scripts
             isMovable = true;
             PhoneCallEvent phoneCallEvent = FindObjectOfType<PhoneCallEvent>();
             Destroy(phoneCallEvent.gameObject);
+        }
+
+        public void KillCat()
+        {
+            if (IsPickedUpInteractableMurderable())
+            {
+                Destroy(_pickedUpInteractable.gameObject);
+                _pickedUpInteractable = null;
+            }
+        }
+
+        public Vector2 PlayerSize()
+        {
+            return _spriteRenderer.sprite.bounds.size;
+        }
+
+        public Vector2 ColliderSize()
+        {
+            return _collider2D.bounds.size;
         }
     }
 }

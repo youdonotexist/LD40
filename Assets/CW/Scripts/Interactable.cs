@@ -23,7 +23,11 @@ namespace CW.Scripts
 			Close,
 			
 			//Phone
-			Answer
+			Answer,
+			
+			//Toilet
+			Flush,
+			Flush_Cat
 		}
 
 		public abstract void Interact(Player player, Interactions interaction);

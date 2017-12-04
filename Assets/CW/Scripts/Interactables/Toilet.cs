@@ -1,37 +1,87 @@
-using System.Collections;
 using System.Collections.Generic;
-using CW.Scripts;
+using CW.Scripts.UI;
 using UnityEngine;
 
-public class Toilet : Interactable {
-
-	// Use this for initialization
-	void Start () {
+namespace CW.Scripts.Interactables
+{
+	public class Toilet : Interactable
+	{
+		[SerializeField]
+		private Sprite _closed;
 		
-	}
-	
-	// Update is called once per frame
-	void Update () {
+		[SerializeField]
+		private Sprite _open;
 		
-	}
+		private bool _isOpen = false;
+		private Collider2D _collider2D;
+		private Transform _transform;
+		private SpriteRenderer _spriteRenderer;
 
-	public override void Interact(Player player, Interactions interaction)
-	{
-		throw new System.NotImplementedException();
-	}
+		private void Awake()
+		{
+			_collider2D = GetComponent<Collider2D>();
+			_transform = GetComponent<Transform>();
+			_spriteRenderer = GetComponent<SpriteRenderer>();
+		}
 
-	public override Dictionary<KeyCode, Interactions> InteractOptions(Player player)
-	{
-		throw new System.NotImplementedException();
-	}
+		public override void Interact(Player player, Interactions interaction)
+		{
+			if (interaction == Interactions.Close || interaction == Interactions.Open)
+			{
+				_spriteRenderer.sprite = interaction == Interactions.Close ? _closed : _open;
+				
+				_isOpen = !_isOpen;
+				
+			}
+			else if (interaction == Interactions.Drop)
+			{
+				//do nothing
+			}
+			else if (interaction == Interactions.Flush)
+			{
+				//Play sound
+			}
+			else if (interaction == Interactions.Flush_Cat)
+			{
+				if (player.IsPickedUpInteractableMurderable())
+				{
+					player.KillCat();
+					EvSys.Instance().AddMessage("Flushed Cat: <color=green> -1 to Cats</color>");
+				}
+			}
+		}
 
-	public override bool IsAvailable()
-	{
-		throw new System.NotImplementedException();
-	}
+		public override Dictionary<KeyCode, Interactions> InteractOptions(Player player)
+		{
+			Dictionary<KeyCode, Interactions> interactions = new Dictionary<KeyCode, Interactions>();
 
-	public override void SetDirection(Vector2 walk)
-	{
-		throw new System.NotImplementedException();
+			if (player.HasPickedUpInteractable())
+			{
+				interactions.Add(KeyCode.Alpha1, Interactions.Drop);	
+				
+				if (player.IsPickedUpInteractableMurderable() && _isOpen)
+				{
+					interactions.Add(KeyCode.Alpha2, Interactions.Flush_Cat);
+				}
+				
+			}
+			else
+			{
+				interactions.Add(KeyCode.Alpha1, _isOpen ? Interactions.Close : Interactions.Open);
+				interactions.Add(KeyCode.Alpha2, Interactions.Flush);
+			}
+
+			return interactions;
+		}
+
+		public override bool IsAvailable()
+		{
+			return true;
+		}
+
+		public override void SetDirection(Vector2 walk)
+		{
+			
+		}
 	}
 }

@@ -5093,6 +5093,9 @@ GameObject:
   - component: {fileID: 958491775}
   - component: {fileID: 958491776}
   - component: {fileID: 958491777}
+  - component: {fileID: 958491778}
+  - component: {fileID: 958491780}
+  - component: {fileID: 958491779}
   m_Layer: 0
   m_Name: Toilet
   m_TagString: Untagged
@@ -5107,7 +5110,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 958491774}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.011, y: -1.994, z: 0}
+  m_LocalPosition: {x: 4.011, y: -2.56, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1602227041}
@@ -5146,8 +5149,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -62
-  m_Sprite: {fileID: 21300016, guid: a2f334170dbba42b4a04485025e8617c, type: 3}
+  m_SortingOrder: 4
+  m_Sprite: {fileID: 21300000, guid: 819672ec85abe436d8d8ea411ffc84df, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5168,9 +5171,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7ba6d6752334a8ba3f2d58a0ce2f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CenterY: -62.201588
+  CenterY: 4.7301407
   DoColliderResize: 0
   DoRendererAdjjstment: 1
+--- !u!114 &958491778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 958491774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02fc04442a8b41a696cc0a31ac3e2bc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _closed: {fileID: 21300000, guid: 819672ec85abe436d8d8ea411ffc84df, type: 3}
+  _open: {fileID: 21300002, guid: 819672ec85abe436d8d8ea411ffc84df, type: 3}
+--- !u!114 &958491779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 958491774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7ba6d6752334a8ba3f2d58a0ce2f54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CenterY: 4.7301407
+  DoColliderResize: 1
+  DoRendererAdjjstment: 1
+--- !u!61 &958491780
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 958491774}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 0.6, y: 0.76666665}
+    newSize: {x: 1.6666666, y: 0.73333335}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.6, y: 0.76666665}
+  m_EdgeRadius: 0
 --- !u!1 &968399983
 GameObject:
   m_ObjectHideFlags: 0
@@ -6148,17 +6203,17 @@ Prefab:
     - target: {fileID: 224680810112484296, guid: 021af8d200c9f4348b507a253c578a63,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 56.625
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224462519762738052, guid: 021af8d200c9f4348b507a253c578a63,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 56.625
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224154368086061378, guid: 021af8d200c9f4348b507a253c578a63,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 56.625
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224772901689464228, guid: 021af8d200c9f4348b507a253c578a63,
         type: 2}
@@ -6645,7 +6700,7 @@ GameObject:
   - component: {fileID: 1162601859}
   - component: {fileID: 1162601858}
   - component: {fileID: 1162601861}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
