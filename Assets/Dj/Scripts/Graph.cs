@@ -127,5 +127,13 @@ public class Graph : MonoBehaviour
 		path.Bake ();
 		return path;
 	}
+
+	public Node ClosestNode(Transform trand)
+	{
+		List<Node> sorted = nodes
+			.OrderBy(point => Vector3.Distance(trand.position, point.transform.position)).ToList();
+
+		return sorted.First();
+	}
 	
 }

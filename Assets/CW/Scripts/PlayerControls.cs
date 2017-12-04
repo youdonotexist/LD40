@@ -55,7 +55,7 @@ namespace CW.Scripts
                 _lastForward = walk;
             }
 
-            if (_lastInteractable == null && Input.GetKeyDown(KeyCode.Space))
+            if (_lastInteractable == null && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.JoystickButton10)))
             {
                 _player.Drop();
             }

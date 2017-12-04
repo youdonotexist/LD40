@@ -13,7 +13,7 @@ public class Follower : MonoBehaviour
     [SerializeField] protected Graph m_Graph;
     [SerializeField] protected Node m_Start;
     [SerializeField] protected Node m_End;
-    [SerializeField] protected float m_Speed = 0.01f;
+    public float m_Speed = 0.01f;
     private Rigidbody2D _rigidbody2D;
     protected Path m_Path = new Path();
     protected Node m_Current;
@@ -22,11 +22,11 @@ public class Follower : MonoBehaviour
     void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        m_Graph = GameObject.Find("Nav").GetComponent<Graph>();
     }
 
     public void Begin(Node start, Node end, IPathTracker tracker)
     {
-        m_Graph = GameObject.Find("Nav").GetComponent<Graph>();
         m_Start = start;
         m_End = end;
         m_Path = m_Graph.GetShortestPath(m_Start, m_End);
@@ -92,6 +92,11 @@ public class Follower : MonoBehaviour
             Vector2 walk = (m_Current.transform.position - transform.position).normalized;
             _rigidbody2D.MovePosition(_rigidbody2D.position + (walk * m_Speed * Time.deltaTime));
         }
+    }
+
+    public Node FindClosest()
+    {
+        return m_Graph.ClosestNode(transform);
     }
 
     public void Stop()

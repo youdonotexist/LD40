@@ -15,6 +15,7 @@ namespace CW.Scripts
 
         private Interactable _pickedUpInteractable;
         private SpriteRenderer _spriteRenderer;
+        public Vector2 LastWalk = Vector2.zero;
 
         void Awake()
         {
@@ -64,6 +65,8 @@ namespace CW.Scripts
                 _pickedUpInteractable.transform.localPosition = (Vector2.Scale(walk, new Vector2(0.1f, 0.1f)));
                 _pickedUpInteractable.SetDirection(walk);
             }
+
+            LastWalk = walk;
         }
 
         public bool HasPickedUpInteractable()

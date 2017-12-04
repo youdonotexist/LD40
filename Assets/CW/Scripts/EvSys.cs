@@ -31,7 +31,11 @@ namespace CW.Scripts
         {
             if (_this == null)
             {
-                _this = GameObject.Find("EvSys").GetComponent<EvSys>();
+                GameObject go = GameObject.Find("EvSys");
+                if (go != null)
+                {
+                    _this = go.GetComponent<EvSys>();  
+                }
             }
 
             return _this;
