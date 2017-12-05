@@ -16,6 +16,7 @@ namespace CW.Scripts.Interactables
         void Start()
         {
             CatMeter.TotalAttraction++;
+            CatMeter.TotalNewspapers++;
             EvSys.Instance().AddMessage("Newspaper Hoarding: <color=red>+1 to Cat Attraction</color>");
         }
 
@@ -58,6 +59,7 @@ namespace CW.Scripts.Interactables
         private void OnDestroy()
         {
             CatMeter.TotalAttraction--;
+            CatMeter.TotalNewspapers++;
             EvSys.Instance().AddMessage("Destroyed Newspaper : <color=green>-1 to Cat Attraction</color>");
         }
     }

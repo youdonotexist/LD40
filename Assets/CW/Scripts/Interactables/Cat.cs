@@ -63,7 +63,7 @@ namespace CW.Scripts.Interactables
             _walkToNode = _follower.FindClosest();
         }
 
-        public override void Interact(Player _player, Interactions interaction)
+        public override void Interact(Player player, Interactions interaction)
         {
             if (interaction == Interactions.Pet)
             {
@@ -74,7 +74,7 @@ namespace CW.Scripts.Interactables
                 _collider2D.enabled = false;
                 _follower.Stop();
                 _playerAnimation.PauseAnimation = true;
-                _playerAnimation.Walk(_player.LastWalk);
+                _playerAnimation.Walk(player.LastWalk);
                 _walkToNode = null;
             }
             else if (interaction == Interactions.Drop)

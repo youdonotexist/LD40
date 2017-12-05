@@ -30,7 +30,10 @@ namespace CW.Scripts
 			Flush_Cat,
 			
 			//Freezer
-			Freeze_Cat
+			Freeze_Cat,
+			
+			//Trashcan
+			Trash_Newspaper
 		}
 
 		public abstract void Interact(Player player, Interactions interaction);

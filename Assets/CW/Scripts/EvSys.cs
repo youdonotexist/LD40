@@ -24,14 +24,13 @@ namespace CW.Scripts
 
         private NewsPaperDelivery _currentDoorEvent;
         private PhoneCallEvent _currentPhoneEvent;
-        
-        private RoundMetadata[] _roundMetadataList = new RoundMetadata[3];
-        private int _currentRound = 0;
-        
+
         private readonly List<string> _messageQueue = new List<string>();
-
+        private readonly RoundMetadata[] _roundMetadataList = new RoundMetadata[3];
+        private int _currentRound = 0;
+        private float _roundCounter;
         private float _wait = 0.0f;
-
+        
         private static EvSys _this;
 
         public static EvSys Instance()
@@ -41,7 +40,7 @@ namespace CW.Scripts
                 GameObject go = GameObject.Find("EvSys");
                 if (go != null)
                 {
-                    _this = go.GetComponent<EvSys>();  
+                    _this = go.GetComponent<EvSys>();
                 }
             }
 
@@ -50,36 +49,62 @@ namespace CW.Scripts
 
         void Start()
         {
-            _roundMetadataList[0] = new RoundMetadata();
-            _roundMetadataList[0].NewspaperFrequency = 10.0f;
-            _roundMetadataList[0].PhoneCallFrequency = 10.0f;
-            
-            _roundMetadataList[1].NewspaperFrequency = 8.0f;
-            _roundMetadataList[1].PhoneCallFrequency = 8.0f;
-            
-            _roundMetadataList[2].NewspaperFrequency = 5.0f;
-            _roundMetadataList[2].PhoneCallFrequency = 5.0f;
-        }
+            _roundMetadataList[0] = new RoundMetadata
+            {
+                NewspaperFrequency = 10.0f,
+                PhoneCallFrequency = 10.0f,
+                RoundDuration = 60 * 2,
+                RoundCount = 0
+            };
+
+            _roundMetadataList[1] = new RoundMetadata
+            {
+                NewspaperFrequency = 8.0f,
+                PhoneCallFrequency = 8.0f,
+                RoundDuration = 60 * 3,
+                RoundCount = 1
+            };
+
+            _roundMetadataList[2] = new RoundMetadata
+            {
+                NewspaperFrequency = 5.0f,
+                PhoneCallFrequency = 5.0f,
+                RoundDuration = 60 * 3,
+                RoundCount = 2
+            };
+        } 
 
         // Update is called once per frame
         void Update()
-        {
-            if (_currentDoorEvent == null && _wait > 3.0f && Random.value > 0.6f && CatMeter.TotalNewspapers < CatMeter.MaxNewspapers)
+        {   
+            if (_currentRound > -1)
             {
-                _currentDoorEvent = Instantiate(_newsPaperDeliveryPrefab);
-                _currentDoorEvent.SetSpawnPoint(_newsPaperDeliverySpawnPoint);
-                _wait = 0.0f;
-            }
-            else if (_currentPhoneEvent == null && _wait > 3.0f && Random.value > 0.6f)
-            {
-                _currentPhoneEvent = GameObject.Instantiate(_phoneCallEventPrefab);
-                AddMessage(_currentPhoneEvent.Message());
-                _wait = 0.0f;
-            }
-            else
-            {
-                _wait += Time.deltaTime;
-            }
+                if (_currentDoorEvent == null && _wait > 3.0f && Random.value > 0.6f &&
+                    CatMeter.TotalNewspapers < CatMeter.MaxNewspapers)
+                {
+                    _currentDoorEvent = Instantiate(_newsPaperDeliveryPrefab);
+                    _currentDoorEvent.SetSpawnPoint(_newsPaperDeliverySpawnPoint);
+                    _wait = 0.0f;
+                }
+                else if (_currentPhoneEvent == null && _wait > 3.0f && Random.value > 0.6f)
+                {
+                    _currentPhoneEvent = GameObject.Instantiate(_phoneCallEventPrefab);
+                    AddMessage(_currentPhoneEvent.Message());
+                    _wait = 0.0f;
+                }
+                else
+                {
+                    _wait += Time.deltaTime;
+                }
+                
+                _roundCounter = Mathf.Max(_roundCounter - Time.deltaTime, 0.0f);
+                UIManager.Instance().SetTimer(_roundCounter);
+
+                if (_roundCounter <= 0.0f)
+                {
+                    StartRound();
+                }
+            }   
         }
 
         public void AddMessage(string message)
@@ -91,6 +116,16 @@ namespace CW.Scripts
         private string EventsAsString()
         {
             return string.Join("\n", _messageQueue.AsEnumerable().Reverse().ToArray());
+        }
+
+        private void StartRound()
+        {
+            _currentRound++;
+            RoundMetadata metadata = _roundMetadataList[_currentRound];
+            
+            _roundCounter = metadata.RoundDuration;
+            UIManager.Instance().SetTimer(metadata.RoundDuration);
+            UIManager.Instance().SetRound(metadata.RoundCount);
         }
     }
 }

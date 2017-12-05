@@ -7,6 +7,8 @@ namespace CW.Scripts
 
         public float PhoneCallFrequency = 10.0f;
         public float NewspaperFrequency = 10.0f;
+        public int RoundCount = 0;
+        public float RoundDuration;
         
         // Use this for initialization
         void Start()
