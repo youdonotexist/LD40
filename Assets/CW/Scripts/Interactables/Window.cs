@@ -3,8 +3,11 @@ using UnityEngine;
 
 namespace CW.Scripts.Interactables
 {
-	public class Window : Interactable {
+	public class Window : Interactable
+	{
 
+		[SerializeField] private Transform _spawnLocation;
+		
 		private bool _isOpen = false;
 		private Collider2D _collider2D;
 		private Transform _transform;
@@ -73,8 +76,7 @@ namespace CW.Scripts.Interactables
 				if (_spawnWait > _spawnRate)
 				{
 					Cat cat = CatFactory.Instance().RandomCat();
-					Vector2 pos = _spriteRenderer.bounds.min;
-					cat.transform.position = pos;
+					cat.transform.position = _spawnLocation.position;
 
 					_spawnWait = 0.0f;
 					

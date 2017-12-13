@@ -7,7 +7,10 @@ namespace CW.Scripts.Interactables
     public class Cat : Interactable, IPathTracker
     {
         [SerializeField] private AudioClip _meowClip;
-        [SerializeField] private Sprite _idle;
+        [SerializeField] private Sprite _idleUp;
+        [SerializeField] private Sprite _idleDown;
+        [SerializeField] private Sprite _idleLeft;
+        [SerializeField] private Sprite _idleRight;
 
         private AudioSource _audioSource;
         private Collider2D _collider2D;
@@ -17,7 +20,6 @@ namespace CW.Scripts.Interactables
         private SpriteRenderer _spriteRenderer;
         private Node _walkToNode;
 
-
         void Awake()
         {
             _audioSource = GetComponent<AudioSource>();
@@ -26,8 +28,6 @@ namespace CW.Scripts.Interactables
             _follower = GetComponent<Follower>();
             _spriteRenderer = GetComponent<SpriteRenderer>();
             _rigidbody2D = GetComponent<Rigidbody2D>();
-
-            CatMeter.TotalCat++;
         }
 
         // Use this for initialization
@@ -43,18 +43,31 @@ namespace CW.Scripts.Interactables
                 if (Vector2.Distance(transform.position, _walkToNode.transform.position) <
                     (_follower.m_Speed * Time.deltaTime))
                 {
+
                     if (_walkToNode.connections.Count > 0)
                     {
                         FindPath(_walkToNode);
                         _walkToNode = null;
+                        _playerAnimation.PauseAnimation = false;
+                    }
+                    else
+                    {
+                        _playerAnimation.PauseAnimation = true;
+                        _spriteRenderer.sprite = IdleForDirection(Vector2.right);
                     }
                 }
                 else
                 {
+                    Debug.Log("Walking to node..");
+
                     Vector2 walk = (_walkToNode.transform.position - transform.position).normalized;
                     _playerAnimation.Walk(walk);
                     _rigidbody2D.MovePosition(_rigidbody2D.position + (walk * _follower.m_Speed * Time.deltaTime));
                 }
+            }
+            else
+            {
+                Debug.Log("Nowhere to go..");
             }
         }
 
@@ -81,9 +94,28 @@ namespace CW.Scripts.Interactables
             {
                 _collider2D.enabled = true;
                 _collider2D.isTrigger = true;
-                _playerAnimation.PauseAnimation = false;
-                _spriteRenderer.sprite = _idle;
+                _spriteRenderer.sprite = IdleForDirection(player.LastWalk);
                 Invoke("DelayedFindPath", 3.0f);
+            }
+        }
+
+        private Sprite IdleForDirection(Vector2 dir)
+        {
+            if (dir.y > 0.0f)
+            {
+                return _idleUp;
+            }
+            else if (dir.y < 0.0f)
+            {
+                return _idleDown;
+            }
+            else if (dir.x > 0.0f)
+            {
+                return _idleRight;
+            }
+            else
+            {
+                return _idleLeft;
             }
         }
 
@@ -114,7 +146,14 @@ namespace CW.Scripts.Interactables
 
         public override void SetDirection(Vector2 walk)
         {
-            _playerAnimation.Walk(walk);
+            if (transform.parent == null)
+            {
+                _playerAnimation.Walk(walk);
+            }
+            else
+            {
+                _spriteRenderer.sprite = IdleForDirection(walk);
+            }
         }
 
         public void OnCompletePath(Node lastNode)
@@ -132,6 +171,7 @@ namespace CW.Scripts.Interactables
         {
             if (transform.parent == null)
             {
+                _playerAnimation.PauseAnimation = false;
                 _walkToNode = _follower.FindClosest();
                 _collider2D.isTrigger = false;
             }
@@ -146,11 +186,6 @@ namespace CW.Scripts.Interactables
             Node n2 = nodes[Random.Range(0, nodes.Count)];
 
             _follower.Begin(n1, n2, this);
-        }
-
-        private void OnDestroy()
-        {
-            CatMeter.TotalCat--;
         }
     }
 }

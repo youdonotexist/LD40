@@ -27,10 +27,10 @@ namespace CW.Scripts
 
         private readonly List<string> _messageQueue = new List<string>();
         private readonly RoundMetadata[] _roundMetadataList = new RoundMetadata[3];
-        private int _currentRound = 0;
+        private int _currentRound = -1;
         private float _roundCounter;
         private float _wait = 0.0f;
-        
+
         private static EvSys _this;
 
         public static EvSys Instance()
@@ -72,11 +72,23 @@ namespace CW.Scripts
                 RoundDuration = 60 * 3,
                 RoundCount = 2
             };
-        } 
+
+            Invoke("GameStart", 10.0f);
+            _currentRound = 0;
+            UIManager.Instance().ShowText(SpeechDialog.PhoneInteraction());
+            
+            
+        }
+
+        private void GameStart()
+        {
+            NewsPaperDelivery delivery = Instantiate(_newsPaperDeliveryPrefab);
+            delivery.SetSpawnPoint(_newsPaperDeliverySpawnPoint);
+        }
 
         // Update is called once per frame
-        void Update()
-        {   
+        private void Update()
+        {
             if (_currentRound > -1)
             {
                 if (_currentDoorEvent == null && _wait > 3.0f && Random.value > 0.6f &&
@@ -88,7 +100,7 @@ namespace CW.Scripts
                 }
                 else if (_currentPhoneEvent == null && _wait > 3.0f && Random.value > 0.6f)
                 {
-                    _currentPhoneEvent = GameObject.Instantiate(_phoneCallEventPrefab);
+                    _currentPhoneEvent = Instantiate(_phoneCallEventPrefab);
                     AddMessage(_currentPhoneEvent.Message());
                     _wait = 0.0f;
                 }
@@ -96,7 +108,7 @@ namespace CW.Scripts
                 {
                     _wait += Time.deltaTime;
                 }
-                
+
                 _roundCounter = Mathf.Max(_roundCounter - Time.deltaTime, 0.0f);
                 UIManager.Instance().SetTimer(_roundCounter);
 
@@ -104,13 +116,16 @@ namespace CW.Scripts
                 {
                     StartRound();
                 }
-            }   
+            }
         }
 
         public void AddMessage(string message)
         {
-            _messageQueue.Add(message);
-            _eventTextbox.text = EventsAsString();
+            if (_eventTextbox != null)
+            {
+                _messageQueue.Add(message);
+                _eventTextbox.text = EventsAsString();
+            }
         }
 
         private string EventsAsString()
@@ -122,7 +137,7 @@ namespace CW.Scripts
         {
             _currentRound++;
             RoundMetadata metadata = _roundMetadataList[_currentRound];
-            
+
             _roundCounter = metadata.RoundDuration;
             UIManager.Instance().SetTimer(metadata.RoundDuration);
             UIManager.Instance().SetRound(metadata.RoundCount);

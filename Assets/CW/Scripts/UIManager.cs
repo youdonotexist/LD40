@@ -1,6 +1,5 @@
-using System;
-using System.Collections.Generic;
 using CW.Scripts.UI;
+using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,14 +10,12 @@ namespace CW.Scripts
         private static UIManager _uiMan;
 
         [SerializeField] private InteractionOptions _interactionMenu;
+        [SerializeField] private SpeechBubble _speechBubble;
 
         [SerializeField] private Text _roundText;
         [SerializeField] private Text _timerText;
 
-        public void ShowOptionsMenu(Player player, Interactable interactable)
-        {
-            _interactionMenu.ShowOptions(player, interactable);
-        }
+        private float _speechTimer = 0.0f;
 
         public static UIManager Instance()
         {
@@ -28,6 +25,11 @@ namespace CW.Scripts
             }
 
             return _uiMan;
+        }
+
+        public void ShowOptionsMenu(Player player, Interactable interactable)
+        {
+            _interactionMenu.ShowOptions(player, interactable);
         }
 
         public void SetTimer(float timeInSeconds)
@@ -40,6 +42,23 @@ namespace CW.Scripts
         public void SetRound(int metadataRoundCount)
         {
             _roundText.text = "Round " + metadataRoundCount;
+        }
+
+        public void ShowText(string text, float time)
+        {
+            _speechBubble.SetText2(text);
+            _speechTimer = time;
+        }
+
+        public void ShowText(IObservable<DialogText> stream)
+        {
+            _speechBubble.SetText(stream);
+        }
+
+        private void Update()
+        {
+           // _speechBubble.gameObject.SetActive(_speechTimer > 0.0f);
+           // _speechTimer = Mathf.Max(_speechTimer - Time.deltaTime, 0.0f);
         }
     }
 }

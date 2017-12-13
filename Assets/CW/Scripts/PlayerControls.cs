@@ -41,7 +41,7 @@ namespace CW.Scripts
         // Update is called once per frame
         void FixedUpdate()
         {
-            if (!_player.isMovable)
+            if (!_player.IsMovable)
             {
                 return;
             }
@@ -70,14 +70,13 @@ namespace CW.Scripts
             RaycastHit2D hit = Physics2D.BoxCast(_player.transform.position, _player.ColliderSize(), 0.0f, _lastForward,
                 1.0f, _layerMask);
             
-            //RaycastHit2D hit = Physics2D.Raycast(_player.transform.position, _lastForward, 1.0f, _layerMask);
             if (hit.collider != null)
             {
-                Debug.Log("hit name: " + hit.collider.name);
+                //Debug.Log("hit name: " + hit.collider.name);
                 Interactable interactable = hit.collider.GetComponent<Interactable>();
                 if (interactable != null && interactable.IsAvailable())
                 {
-                    Debug.Log("hit interactable");
+                    //Debug.Log("hit interactable");
                     if (interactable != _lastInteractable)
                     {
                         _lastInteractable = interactable;

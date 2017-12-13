@@ -11,7 +11,17 @@ namespace CW.Scripts
         private readonly string _directionTrigger = "Direction";
         private readonly string _speedTrigger = "Speed";
 
-        public bool PauseAnimation = false;
+        private bool _pauseAnimation;
+
+        public bool PauseAnimation
+        {
+            get { return _pauseAnimation; }
+            set
+            {
+                _playerAnimator.enabled = !value;
+                _pauseAnimation = value;
+            }
+        }
 
         public void Walk(Vector2 walk)
         {
@@ -50,7 +60,7 @@ namespace CW.Scripts
                     else
                     {
                         direction = PlayerControls.Direction.Down;
-                    }    
+                    }
                 }
             }
 

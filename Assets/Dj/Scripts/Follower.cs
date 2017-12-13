@@ -64,13 +64,10 @@ public class Follower : MonoBehaviour
             {
                 _pathTracker.OnDirectionChange((m_Current.transform.position - transform.position).normalized);
             }
-
-            Debug.Log("Inside node processing");
             
             // Wait until we reach the current target node and then go to next node
             yield return new WaitUntil(delegate
             {
-                Debug.Log("waiting for event..");
                 return Vector2.Distance(transform.position, m_Current.transform.position) <
                        (m_Speed * Time.deltaTime) || m_Path == null;
             });

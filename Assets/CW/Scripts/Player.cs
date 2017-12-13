@@ -1,5 +1,6 @@
 using CW.Scripts.Events;
 using CW.Scripts.Interactables;
+using UniRx;
 using UnityEngine;
 
 namespace CW.Scripts
@@ -11,17 +12,25 @@ namespace CW.Scripts
             PickUp
         }
 
-        public bool isMovable = true;
+        public bool IsMovable = true;
+        public Vector2 LastWalk = Vector2.zero;
 
         private Interactable _pickedUpInteractable;
         private SpriteRenderer _spriteRenderer;
-        public Vector2 LastWalk = Vector2.zero;
         private Collider2D _collider2D;
 
         void Awake()
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
             _collider2D = GetComponent<Collider2D>();
+        }
+
+        private void Update()
+        {
+            if (_pickedUpInteractable != null)
+            {
+                _pickedUpInteractable.SetDirection(LastWalk);
+            }
         }
 
         public void Interact(Interactable.Interactions code, Interactable interactable)
@@ -83,13 +92,13 @@ namespace CW.Scripts
 
         public void AnswerPhone()
         {
-            isMovable = false;
-            Invoke("EnableMovement", 3);
+            UIManager.Instance().ShowText(SpeechDialog.PhoneInteraction().DoOnCompleted(EnableMovement));
+            IsMovable = false;
         }
 
         private void EnableMovement()
         {
-            isMovable = true;
+            IsMovable = true;
             PhoneCallEvent phoneCallEvent = FindObjectOfType<PhoneCallEvent>();
             Destroy(phoneCallEvent.gameObject);
         }
