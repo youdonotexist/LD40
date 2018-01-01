@@ -33,7 +33,12 @@ namespace CW.Scripts
 			Freeze_Cat,
 			
 			//Trashcan
-			Trash_Newspaper
+			Trash_Newspaper,
+			
+			//Fence
+			Free_Cat,
+			Scream_At_The_Neighbours
+			
 		}
 
 		public abstract void Interact(Player player, Interactions interaction);

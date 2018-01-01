@@ -1,12 +1,11 @@
 fileFormatVersion: 2
-guid: 819672ec85abe436d8d8ea411ffc84df
-timeCreated: 1514787797
+guid: 8a50070e098e741b1acd1cdcc030bf66
+timeCreated: 1513841557
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Toilet_0
-    21300002: Toilet_1
-    21300004: Toilet_2
+    21300000: poop_0
+    21300002: poop_1
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -108,43 +107,29 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Toilet_0
+      name: poop_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 40
-        width: 18
-        height: 23
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 1
+        y: 16
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Toilet_1
+      name: poop_1
       rect:
         serializedVersion: 2
-        x: 24
-        y: 31
-        width: 17
-        height: 24
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Toilet_2
-      rect:
-        serializedVersion: 2
-        x: 2
-        y: 4
-        width: 36
-        height: 23
-      alignment: 9
-      pivot: {x: 0.5, y: -0.03617036}
+        x: 15
+        y: 23
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

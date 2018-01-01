@@ -44,21 +44,9 @@ namespace CW.Scripts
             _roundText.text = "Round " + metadataRoundCount;
         }
 
-        public void ShowText(string text, float time)
+        public IObservable<DialogText> ShowText(IObservable<DialogText> stream)
         {
-            _speechBubble.SetText2(text);
-            _speechTimer = time;
-        }
-
-        public void ShowText(IObservable<DialogText> stream)
-        {
-            _speechBubble.SetText(stream);
-        }
-
-        private void Update()
-        {
-           // _speechBubble.gameObject.SetActive(_speechTimer > 0.0f);
-           // _speechTimer = Mathf.Max(_speechTimer - Time.deltaTime, 0.0f);
+            return _speechBubble.SetText(stream);
         }
     }
 }

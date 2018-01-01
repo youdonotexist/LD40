@@ -40,13 +40,22 @@ namespace CW.Scripts.Interactables
 
         public override Dictionary<KeyCode, Interactions> InteractOptions(Player player)
         {
-            Dictionary<KeyCode, Interactions> interactions =
-                new Dictionary<KeyCode, Interactions> {{KeyCode.Alpha1, Interactions.Pickup}};
+            Dictionary<KeyCode, Interactions> interactions = new Dictionary<KeyCode, Interactions> ();
 
-
-            if (player.HasPickedUpInteractable() && !player.IsPickedUpInteractableMurderable())
+            if (player.HasPickedUpInteractable())
             {
-                interactions.Add(KeyCode.Alpha2, Interactions.Trash_Newspaper);
+                if (!player.IsPickedUpInteractableMurderable())
+                {
+                    interactions.Add(KeyCode.Alpha1, Interactions.Trash_Newspaper);
+                }
+                else
+                {
+                    interactions.Add(KeyCode.Alpha1, Interactions.Drop);
+                }
+            }
+            else 
+            {
+                interactions.Add(interactions.Count > 0 ? KeyCode.Alpha2 : KeyCode.Alpha1, Interactions.Pickup);
             }
 
             return interactions;

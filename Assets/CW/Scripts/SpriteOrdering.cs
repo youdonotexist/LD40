@@ -1,3 +1,4 @@
+using UniRx;
 using UnityEngine;
 
 namespace CW.Scripts
@@ -7,9 +8,11 @@ namespace CW.Scripts
     {
         private SpriteRenderer _spriteRenderer;
         private BoxCollider2D _boxCollider2D;
-        public float CenterY = 0.0f;
-        public bool DoColliderResize = false;
+        public ReactiveProperty<float> CenterY = new ReactiveProperty<float>();
+        public bool DoColliderResize;
         public bool DoRendererAdjjstment = true;
+        
+        
 
         // Use this for initialization
         void Awake()
@@ -24,8 +27,8 @@ namespace CW.Scripts
             if (DoRendererAdjjstment)
             {
                 Camera cam = CameraManager.Get().GetCamera();
-                CenterY = cam.WorldToScreenPoint(transform.position).y * -1;
-                _spriteRenderer.sortingOrder = (int) CenterY;
+                CenterY.SetValueAndForceNotify(cam.WorldToScreenPoint(transform.position).y * -1);
+                _spriteRenderer.sortingOrder = (int) CenterY.Value;
             }
 
             if (DoColliderResize && _boxCollider2D != null)
@@ -33,6 +36,11 @@ namespace CW.Scripts
                 Vector3 v = _spriteRenderer.bounds.size;
                 _boxCollider2D.size = v;
             }
+        }
+
+        public int GetSpriteOrder()
+        {
+            return _spriteRenderer.sortingOrder;
         }
     }
 }

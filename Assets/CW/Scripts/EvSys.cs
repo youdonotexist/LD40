@@ -75,9 +75,6 @@ namespace CW.Scripts
 
             Invoke("GameStart", 10.0f);
             _currentRound = 0;
-            UIManager.Instance().ShowText(SpeechDialog.PhoneInteraction());
-            
-            
         }
 
         private void GameStart()

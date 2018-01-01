@@ -1,12 +1,15 @@
 fileFormatVersion: 2
-guid: 819672ec85abe436d8d8ea411ffc84df
-timeCreated: 1514787797
+guid: 90e17fa130fa74a14b74a849097852c6
+timeCreated: 1514787768
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Toilet_0
-    21300002: Toilet_1
-    21300004: Toilet_2
+    21300000: tv_0
+    21300002: tv_1
+    21300004: tv_2
+    21300006: tv_3
+    21300008: tv_4
+    21300010: tv_5
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -108,43 +111,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Toilet_0
+      name: tv_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 40
-        width: 18
-        height: 23
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Toilet_1
-      rect:
-        serializedVersion: 2
-        x: 24
-        y: 31
-        width: 17
-        height: 24
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Toilet_2
-      rect:
-        serializedVersion: 2
-        x: 2
-        y: 4
-        width: 36
-        height: 23
+        x: 1
+        y: 46
+        width: 30
+        height: 17
       alignment: 9
-      pivot: {x: 0.5, y: -0.03617036}
+      pivot: {x: 0.5060009, y: 0.012865178}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tv_1
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 46
+        width: 30
+        height: 17
+      alignment: 9
+      pivot: {x: 0.5060009, y: -0.0030196696}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tv_2
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 27
+        width: 30
+        height: 17
+      alignment: 9
+      pivot: {x: 0.49999997, y: 0.0022753547}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tv_3
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 27
+        width: 30
+        height: 17
+      alignment: 9
+      pivot: {x: 0.49699947, y: 0.0022753547}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tv_4
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 8
+        width: 30
+        height: 17
+      alignment: 9
+      pivot: {x: 0.49999997, y: 0.0022753547}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tv_5
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 8
+        width: 30
+        height: 17
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0075702667}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

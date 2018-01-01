@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using UniRx;
@@ -12,25 +10,30 @@ namespace CW.Scripts.UI
         [SerializeField] private Text _text;
         [SerializeField] private SpriteRenderer _player;
 
-        public void SetText2(string text)
+        public void SetText2(DialogText dialogText)
         {
-            Debug.Log(text);
-            gameObject.SetActive(!string.IsNullOrEmpty(text));
-            _text.text = text;
+            bool emptyDialog = dialogText == null || string.IsNullOrEmpty(dialogText.Text);
+
+            gameObject.SetActive(!emptyDialog);
+            _text.text = !emptyDialog ? dialogText.Text : null;
         }
 
-        public void SetText(UniRx.IObservable<DialogText> events)
+        public UniRx.IObservable<DialogText> SetText(UniRx.IObservable<DialogText> events)
         {
-            /*events
-                .Select(e => Observable.Return(e.Text).Delay(TimeSpan.FromSeconds(e.Duration)))
-                .Do(e => SetText2(e.Text))
-                .Concat()
-                .DoOnCompleted(() => gameObject.SetActive(false))
-                .Subscribe(SetText2);*/
-            
-            Observable.Interval(TimeSpan.FromSeconds(2.0f))
-                .Zip(events, (n, p) => p)     
-                .Subscribe(x => SetText2(x.Text));
+            var stream =
+                Observable.Zip
+                    (
+                        Observable.Timer(DateTimeOffset.Now, TimeSpan.FromSeconds(2.0f)).Select(l => (DialogText) null),
+                        events
+                    )
+                    .Concat()
+                    .DoOnCompleted(() => gameObject.SetActive(false))
+                    .SelectMany((empty, good) => empty);
+
+
+            stream.Subscribe(SetText2);
+
+            return stream;
         }
 
         private void LateUpdate()

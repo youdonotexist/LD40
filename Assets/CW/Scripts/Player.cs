@@ -92,7 +92,10 @@ namespace CW.Scripts
 
         public void AnswerPhone()
         {
-            UIManager.Instance().ShowText(SpeechDialog.PhoneInteraction().DoOnCompleted(EnableMovement));
+            UIManager.Instance().ShowText(SpeechDialog.PhoneInteraction())
+                .DoOnCompleted(EnableMovement)
+                .Subscribe();
+
             IsMovable = false;
         }
 
@@ -114,6 +117,7 @@ namespace CW.Scripts
 
         public Interactable TakePickedupItem()
         {
+            Debug.Log("Giving interactable.....");
             Interactable tmp = _pickedUpInteractable;
             _pickedUpInteractable.transform.parent = null;
             _pickedUpInteractable = null;
@@ -128,6 +132,11 @@ namespace CW.Scripts
         public Vector2 ColliderSize()
         {
             return _collider2D.bounds.size;
+        }
+        
+        public Vector2 ColliderOffset()
+        {
+            return _collider2D.bounds.center;
         }
     }
 }

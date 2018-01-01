@@ -67,13 +67,22 @@ namespace CW.Scripts
         {
 
             float angle = Vector2.Angle(new Vector2(1.0f, 0.0f), _lastForward.normalized);
-            RaycastHit2D hit = Physics2D.BoxCast(_player.transform.position, _player.ColliderSize(), 0.0f, _lastForward,
+            RaycastHit2D hit = Physics2D.BoxCast(_player.ColliderOffset(), _player.ColliderSize(), 0.0f, _lastForward,
                 1.0f, _layerMask);
             
             if (hit.collider != null)
             {
-                //Debug.Log("hit name: " + hit.collider.name);
-                Interactable interactable = hit.collider.GetComponent<Interactable>();
+                Debug.Log("hit name: " + hit.collider.name);
+                Interactable interactable;
+                if (hit.collider.composite != null)
+                {
+                    interactable = hit.collider.composite.GetComponent<Interactable>();
+                }
+                else
+                {
+                    interactable = hit.collider.GetComponent<Interactable>();
+                }
+                 
                 if (interactable != null && interactable.IsAvailable())
                 {
                     //Debug.Log("hit interactable");
