@@ -37,7 +37,11 @@ namespace CW.Scripts
 			
 			//Fence
 			Free_Cat,
-			Scream_At_The_Neighbours
+			Scream_At_The_Neighbours,
+			
+			//TV
+			Turn_On,
+			Turn_Off
 			
 		}
 

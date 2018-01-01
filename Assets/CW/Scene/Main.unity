@@ -520,7 +520,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7ba6d6752334a8ba3f2d58a0ce2f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CenterY: -312.5833
   DoColliderResize: 0
   DoRendererAdjjstment: 1
 --- !u!114 &57877591
@@ -534,7 +533,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7ba6d6752334a8ba3f2d58a0ce2f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CenterY: -312.5833
   DoColliderResize: 1
   DoRendererAdjjstment: 1
 --- !u!224 &60392384 stripped
@@ -1317,7 +1315,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7ba6d6752334a8ba3f2d58a0ce2f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CenterY: -10000
   DoColliderResize: 0
   DoRendererAdjjstment: 0
 --- !u!212 &248945591
@@ -4080,7 +4077,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7ba6d6752334a8ba3f2d58a0ce2f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CenterY: -645.05835
   DoColliderResize: 0
   DoRendererAdjjstment: 1
 --- !u!61 &622823962
@@ -4558,7 +4554,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7ba6d6752334a8ba3f2d58a0ce2f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CenterY: -579.7917
   DoColliderResize: 1
   DoRendererAdjjstment: 1
 --- !u!61 &698794635
@@ -5080,7 +5075,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7ba6d6752334a8ba3f2d58a0ce2f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CenterY: -378.61288
   DoColliderResize: 0
   DoRendererAdjjstment: 0
 --- !u!1 &894993228
@@ -5506,7 +5500,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7ba6d6752334a8ba3f2d58a0ce2f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CenterY: 3.6666527
   DoColliderResize: 0
   DoRendererAdjjstment: 1
 --- !u!114 &958491778
@@ -5534,7 +5527,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7ba6d6752334a8ba3f2d58a0ce2f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CenterY: 3.6666527
   DoColliderResize: 1
   DoRendererAdjjstment: 1
 --- !u!61 &958491780
@@ -7245,7 +7237,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7ba6d6752334a8ba3f2d58a0ce2f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CenterY: -579.7917
   DoColliderResize: 1
   DoRendererAdjjstment: 1
 --- !u!61 &1128643524
@@ -8032,7 +8023,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7ba6d6752334a8ba3f2d58a0ce2f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CenterY: -699.4167
   DoColliderResize: 0
   DoRendererAdjjstment: 1
 --- !u!212 &1209772747
@@ -8163,7 +8153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7ba6d6752334a8ba3f2d58a0ce2f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CenterY: -579.7917
   DoColliderResize: 1
   DoRendererAdjjstment: 1
 --- !u!61 &1241748437
@@ -8890,7 +8879,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7ba6d6752334a8ba3f2d58a0ce2f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CenterY: 20.166672
   DoColliderResize: 0
   DoRendererAdjjstment: 1
 --- !u!212 &1306816533
@@ -9321,7 +9309,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7ba6d6752334a8ba3f2d58a0ce2f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CenterY: -579.7917
   DoColliderResize: 1
   DoRendererAdjjstment: 1
 --- !u!61 &1359528297
@@ -9709,6 +9696,7 @@ GameObject:
   - component: {fileID: 1371189237}
   - component: {fileID: 1371189239}
   - component: {fileID: 1371189238}
+  - component: {fileID: 1371189240}
   m_Layer: 0
   m_Name: Table
   m_TagString: Untagged
@@ -9740,7 +9728,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7ba6d6752334a8ba3f2d58a0ce2f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CenterY: -394.1498
   DoColliderResize: 0
   DoRendererAdjjstment: 1
 --- !u!212 &1371189239
@@ -9787,6 +9774,31 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!61 &1371189240
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1371189236}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 1
+  m_Offset: {x: 0, y: -0.36666667}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 1}
+    oldSize: {x: 1.4333333, y: 0.73333335}
+    newSize: {x: 1.4333333, y: 0.73333335}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.4333333, y: 0.73333335}
+  m_EdgeRadius: 0
 --- !u!224 &1379393147 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224772901689464228, guid: 021af8d200c9f4348b507a253c578a63,
@@ -10799,6 +10811,7 @@ GameObject:
   - component: {fileID: 1525492564}
   - component: {fileID: 1525492566}
   - component: {fileID: 1525492565}
+  - component: {fileID: 1525492568}
   m_Layer: 0
   m_Name: TV
   m_TagString: Untagged
@@ -10831,7 +10844,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7ba6d6752334a8ba3f2d58a0ce2f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CenterY: -366.2831
   DoColliderResize: 0
   DoRendererAdjjstment: 1
 --- !u!212 &1525492566
@@ -10878,6 +10890,31 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!61 &1525492568
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1525492563}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 1
+  m_Offset: {x: 0, y: 0.41106397}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: -0.03617036}
+    oldSize: {x: 1.2, y: 0.76666665}
+    newSize: {x: 1.2, y: 0.76666665}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.2, y: 0.76666665}
+  m_EdgeRadius: 0
 --- !u!1 &1534859314
 GameObject:
   m_ObjectHideFlags: 0
@@ -12865,7 +12902,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7ba6d6752334a8ba3f2d58a0ce2f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CenterY: 10.908341
   DoColliderResize: 0
   DoRendererAdjjstment: 1
 --- !u!61 &1818225755
@@ -13464,6 +13500,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1851885714}
+  - component: {fileID: 1851885715}
+  - component: {fileID: 1851885717}
+  - component: {fileID: 1851885716}
   m_Layer: 0
   m_Name: TV
   m_TagString: Untagged
@@ -13486,6 +13525,93 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1851885715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1851885713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16590c8304da54111b8b9cf3e62f3d6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _screen: {fileID: 1825097936}
+  _screens:
+  - {fileID: 21300000, guid: 90e17fa130fa74a14b74a849097852c6, type: 3}
+  - {fileID: 21300002, guid: 90e17fa130fa74a14b74a849097852c6, type: 3}
+  - {fileID: 21300004, guid: 90e17fa130fa74a14b74a849097852c6, type: 3}
+  - {fileID: 21300006, guid: 90e17fa130fa74a14b74a849097852c6, type: 3}
+  - {fileID: 21300008, guid: 90e17fa130fa74a14b74a849097852c6, type: 3}
+  - {fileID: 21300010, guid: 90e17fa130fa74a14b74a849097852c6, type: 3}
+--- !u!66 &1851885716
+CompositeCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1851885713}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_GeometryType: 0
+  m_GenerationType: 0
+  m_EdgeRadius: 0
+  m_ColliderPaths:
+  - m_Collider: {fileID: 1371189240}
+    m_ColliderPaths:
+    - - X: 7166666
+        Y: -38000000
+      - X: -7166666
+        Y: -38000000
+      - X: -7166666
+        Y: -45333332
+      - X: 7166666
+        Y: -45333332
+  - m_Collider: {fileID: 1525492568}
+    m_ColliderPaths:
+    - - X: 6000000
+        Y: -33096028
+      - X: -6000000
+        Y: -33096028
+      - X: -6000000
+        Y: -40762696
+      - X: 6000000
+        Y: -40762696
+  m_CompositePaths:
+    m_Paths:
+    - - {x: 0.7166666, y: -3.8}
+      - {x: 0.6, y: -3.8}
+      - {x: 0.6, y: -3.3096027}
+      - {x: -0.6, y: -3.3096027}
+      - {x: -0.6, y: -3.8}
+      - {x: -0.7166666, y: -3.8}
+      - {x: -0.7166666, y: -4.5333333}
+      - {x: 0.7166666, y: -4.5333333}
+  m_VertexDistance: 0.0005
+--- !u!50 &1851885717
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1851885713}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &1875092587
 GameObject:
   m_ObjectHideFlags: 0
@@ -13571,7 +13697,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7ba6d6752334a8ba3f2d58a0ce2f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CenterY: -377.11667
   DoColliderResize: 0
   DoRendererAdjjstment: 1
 --- !u!1 &1894058088
@@ -14185,7 +14310,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7ba6d6752334a8ba3f2d58a0ce2f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CenterY: -579.7917
   DoColliderResize: 1
   DoRendererAdjjstment: 1
 --- !u!61 &2003121284
@@ -14299,7 +14423,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7ba6d6752334a8ba3f2d58a0ce2f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CenterY: -579.7917
   DoColliderResize: 1
   DoRendererAdjjstment: 1
 --- !u!61 &2008709549
