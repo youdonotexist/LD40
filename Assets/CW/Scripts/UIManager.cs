@@ -15,8 +15,6 @@ namespace CW.Scripts
         [SerializeField] private Text _roundText;
         [SerializeField] private Text _timerText;
 
-        private float _speechTimer = 0.0f;
-
         public static UIManager Instance()
         {
             if (_uiMan == null)

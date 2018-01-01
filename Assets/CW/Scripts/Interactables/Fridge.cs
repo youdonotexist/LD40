@@ -10,8 +10,6 @@ namespace CW.Scripts.Interactables
         [SerializeField] private Sprite _open;
 
         private bool _isOpen = false;
-        private Collider2D _collider2D;
-        private Transform _transform;
         private SpriteRenderer _spriteRenderer;
         private Interactable _cat;
 
@@ -20,8 +18,6 @@ namespace CW.Scripts.Interactables
 
         private void Awake()
         {
-            _collider2D = GetComponent<Collider2D>();
-            _transform = GetComponent<Transform>();
             _spriteRenderer = GetComponent<SpriteRenderer>();
         }
 

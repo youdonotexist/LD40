@@ -9,8 +9,6 @@ namespace CW.Scripts.Interactables
 		[SerializeField] private Transform _spawnLocation;
 		
 		private bool _isOpen = false;
-		private Collider2D _collider2D;
-		private Transform _transform;
 		private SpriteRenderer _spriteRenderer;
 
 		private float _spawnRate = 10.0f; //Every 10 seconds
@@ -24,8 +22,6 @@ namespace CW.Scripts.Interactables
 
 		void Awake()
 		{
-			_collider2D = GetComponent<Collider2D>();
-			_transform = GetComponent<Transform>();
 			_spriteRenderer = GetComponent<SpriteRenderer>();
 		}
 		

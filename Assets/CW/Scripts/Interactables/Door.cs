@@ -5,14 +5,12 @@ namespace CW.Scripts.Interactables
 {
     public class Door : Interactable
     {
-        private bool _isOpen = false;
-        private Collider2D _collider2D;
+        private bool _isOpen;
         private Transform _transform;
         private SpriteRenderer _spriteRenderer;
 
         void Awake()
         {
-            _collider2D = GetComponent<Collider2D>();
             _transform = GetComponent<Transform>();
             _spriteRenderer = GetComponent<SpriteRenderer>();
         }

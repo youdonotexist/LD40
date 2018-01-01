@@ -16,15 +16,11 @@ namespace CW.Scripts.Interactables
 		private AudioClip _flush;
 		
 		private bool _isOpen = false;
-		private Collider2D _collider2D;
-		private Transform _transform;
 		private SpriteRenderer _spriteRenderer;
 		private AudioSource _audioSource;
 
 		private void Awake()
 		{
-			_collider2D = GetComponent<Collider2D>();
-			_transform = GetComponent<Transform>();
 			_spriteRenderer = GetComponent<SpriteRenderer>();
 			_audioSource = GetComponent<AudioSource>();
 		}

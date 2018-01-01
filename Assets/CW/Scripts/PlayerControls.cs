@@ -65,8 +65,6 @@ namespace CW.Scripts
 
         private void DetectInteractable()
         {
-
-            float angle = Vector2.Angle(new Vector2(1.0f, 0.0f), _lastForward.normalized);
             RaycastHit2D hit = Physics2D.BoxCast(_player.ColliderOffset(), _player.ColliderSize(), 0.0f, _lastForward,
                 1.0f, _layerMask);
             
